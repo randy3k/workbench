@@ -8,7 +8,7 @@ LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;
 
 
 alias rsync="rsync -av --exclude \".*\""
-alias nps='ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v cut|grep -v user'
+alias nps='ps ar -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -33,7 +33,7 @@ if [ "$(hostname)" == "gauss" ]; then
 
     function sapply {
         if [ -z "$@" ]; then
-            cmd="ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep"
+            cmd="ps ar -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep"
         else
             cmd="$@"
         fi
