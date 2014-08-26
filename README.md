@@ -8,6 +8,6 @@ curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh |
 # tmux only
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/tmux_local_install.sh | sh
 
-# zch only
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zch_local_install.sh | sh
+# zsh only
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zsh_local_install.sh | sh
 ```
