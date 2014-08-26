@@ -1,14 +1,13 @@
 ```
 # bootstrap
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | sh
-```
 
-```
 # subl only
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | sh
-```
 
-```
 # tmux only
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/tmux_local_install.sh | sh
+
+# zch only
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zch_local_install.sh | sh
 ```
