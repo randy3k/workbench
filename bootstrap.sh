@@ -29,5 +29,20 @@ fi
 mkdir -p ~/.local/etc
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bashrc > ~/.local/etc/bashrc
 
+# zshrc
+if [[ ! -f ~/.zshrc ]]; then
+    touch ~/.zshrc
+fi
+if [[ -z `cat ~/.zshrc | grep \~/.local/etc/zshrc` ]]; then
+cat >> ~/.zshrc <<'EOF'
+if [ -f ~/.local/etc/zshrc ]; then
+    source ~/.local/etc/zshrc
+fi
+EOF
+fi
+mkdir -p ~/.local/etc
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zshrc > ~/.local/etc/zshrc
+
+
 # Rprofile
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/Rprofile > ~/.Rprofile

@@ -12,7 +12,7 @@ fi
 EOF
 fi
 
-if [[-f ~/.bashrc ]] && [[ -z `cat ~/.bashrc | grep 'alias subl'` ]]; then
+if [[ -f ~/.bashrc ]] && [[ -z `cat ~/.bashrc | grep 'alias subl'` ]]; then
 cat >> ~/.bashrc <<'EOF'
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
@@ -21,7 +21,7 @@ fi
 EOF
 fi
 
-if [[-f ~/.zshrc ]] && [[ -z `cat ~/.zshrc | grep 'alias subl'` ]]; then
+if [[ -f ~/.zshrc ]] && [[ -z `cat ~/.zshrc | grep 'alias subl'` ]]; then
 cat >> ~/.zshrc <<'EOF'
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
