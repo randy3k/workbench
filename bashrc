@@ -5,18 +5,23 @@ IGNOREEOF=1
 PS1="\[\033[33m\](\h)\[\033[00m\]-\W\\$ "
 PS1='\[\e]0;\u@\h\a\]'"$PS1"
 LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;31:*.rpm=90'
-alias nps='ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command axr|grep -v user|cut -c-$COLUMNS|grep -v cut'
-alias myjobs='ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command ax|grep $USER|grep -v user|grep -v grep|cut -c-$COLUMNS|grep -v cut'
+
+
+alias rsync="rsync -av --exclude \".*\""
+alias nps='ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v cut|grep -v user'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias h=history
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 alias sudo='sudo '
 
 # for gauss
 if [ "$(hostname)" == "gauss" ]; then
 
-    unalias myjobs
     function slurm {
         if [[ -n "$SLURM_NTASKS" ]]
         then
@@ -26,16 +31,17 @@ if [ "$(hostname)" == "gauss" ]; then
     PS1="\[\033[33m\](\h)\[\033[00m\]\[\033[32m\]$(slurm)\[\033[00m\]-\W\\\$ "
     PS1='\[\e]0;\u@\h\a\]'"$PS1"
 
-    function sshapply {
+    function sapply {
         if [ -z "$@" ]; then
-            cmd="ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command axr|grep -v user|cut -c-$COLUMNS|grep -v cut"
+            cmd="ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep"
         else
             cmd="$@"
         fi
         # echo $cmd
-        for j in $(echo c0-{10..25}); do echo $j; ssh $j $cmd; done;
+        hosts=`sinfo|grep -v PARTITION|grep c0|grep -v down|awk {'print $6'}|sed -r 's/(\[|,)([0-9]+)-([0-9]+)/\1$(echo {\2..\3})/g;s/^/echo /'|bash|sed -r 's/ /,/g;s/\[/{/;s/\]/}/;s/^/echo /'|bash|sed 's/\s/\n/g'|sort|uniq`
+        for j in $hosts; do echo $j; ssh $j "$cmd"; done;
     }
-    alias killr="killall -9 -u rcslai R;sshapply 'killall -9 -u rcslai R'"
+    alias killr="killall -9 -u rcslai R;sapply 'killall -9 -u rcslai R'"
 
     function myjobs {
         if [ -z $1 ]
@@ -51,11 +57,11 @@ if [ "$(hostname)" == "gauss" ]; then
           echo $NAME has no running jobs
          else
           echo $NAME has jobs running on: $hosts
-          PS='ps -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command ax'
+          PS='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command'
            for j in $hosts;
             do
              echo jobs for $NAME on $j;
-             ssh $j "$PS|head -n 1; $PS|grep $NAME|grep -v user|grep -v grep|grep -v sshd|cut -c-$COLUMNS|grep -v cut";
+             ssh $j "$PS|head -n 1; $PS|grep $NAME|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep";
             done;
         fi
     }

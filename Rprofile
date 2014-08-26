@@ -6,19 +6,48 @@
         help_type="html",
         max.print=1000)
 
-    if (interactive() && .Platform$GUI == "X11" && Sys.getenv("RSTUDIO")==""){
-        if ("colorout" %in% rownames(utils::installed.packages())){
-            colorout::setOutputColors256(normal = 4, number = 4, negnum = 5,
-                               string = 6, const = 2,
-                               stderror = 3, warn = 3, error= 1, verbose=FALSE)
-        }else if (Sys.getenv("R_colorout")==""){
-            Sys.setenv(R_colorout=TRUE)
+
+    installed = function(pkg){
+        pkg %in% rownames(utils::installed.packages())
+    }
+    install = function(pkg, github=FALSE){
+        if (Sys.getenv("R_INSTALLING_PACKAGES")==""){
+            Sys.setenv(R_INSTALLING_PACKAGES=TRUE)
             library(stats)
             library(utils)
-            install.packages("devtools")
-            library(devtools)
-            install_github("randy3k/colorout")
-            Sys.setenv(unset="R_colorout")
+            if (github){
+                devtools::install_github(pkg)
+            }else{
+                install.packages(pkg)
+            }
+            Sys.unsetenv("R_INSTALLING_PACKAGES")
+        }
+    }
+
+    if (interactive()) {
+        options(device='quartz')
+
+        package_list = c(
+            "Rcpp",
+            "RcppArmadillo",
+            "doParallel",
+            "ggplot2",
+            "dplyr",
+            "reshape2",
+            "abind",
+            "knitr",
+            "roxygen2"
+            )
+        for (pkg in package_list){
+            if (!installed(pkg)) install(pkg)
+        }
+        if (!installed("devtools")) install("devtools")
+        if (!installed("colorout")) install("jalvesaq/colorout", github=TRUE)
+
+        if (installed("colorout") && .Platform$GUI == "X11" && Sys.getenv("RSTUDIO")==""){
+            colorout::setOutputColors256(normal = 4, number = 4, negnum = 5,
+                               string = 2, const = 6, stderror = 3,
+                               warn = 3, error= 1, verbose=FALSE)
         }
     }
 }
