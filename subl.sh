@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir -p .local/bin
-wget --no-check-certificate -O $HOME/.local/bin/rmate https://raw.github.com/aurora/rmate/master/rmate
+curl -o $HOME/.local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
 chmod +x $HOME/.local/bin/rmate
 
 if [[ -z $(echo $PATH | grep -o $HOME/.local/) ]];
