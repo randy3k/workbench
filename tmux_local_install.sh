@@ -56,7 +56,7 @@ cp tmux $HOME/.local/bin
 
 
 # cleanup
-cd $OLDWD
+cd "$OLDWD"
 rm -rf $HOME/tmux_tmp
 
 echo "$HOME/.local/bin/tmux is now available. You can optionally add $HOME/.local/bin to your PATH."

@@ -10,7 +10,6 @@ set -e
 OLDWD=$PWD
 
 ZSH_VERSION=5.0.2
-NCURSES_VERSION=5.9
 
 mkdir -p $HOME/.local $HOME/zsh_tmp
 cd $HOME/zsh_tmp
@@ -22,6 +21,6 @@ cd zsh-${ZSH_VERSION}
 CPPFLAGS="-I$HOME/.local/include" LDFLAGS="-static -L$HOME/.local/include -L$HOME/.local/lib" make
 make install
 
-cd $OLDWD
+cd "$OLDWD"
 rm -rf $HOME/zsh_tmp
 echo "$HOME/.local/bin/zsh is now available. You can optionally add $HOME/.local/bin to your PATH."
