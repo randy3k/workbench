@@ -8,6 +8,9 @@ curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh |
 # tmux only
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/tmux_local_install.sh | sh
 
+# julia only
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | sh
+
 # zsh only
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zsh_local_install.sh | sh
 ```
