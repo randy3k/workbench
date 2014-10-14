@@ -46,3 +46,10 @@ curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zshrc > ~
 
 # Rprofile
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/Rprofile > ~/.Rprofile
+
+
+# inputrc, for case-insensitive tab completion
+if [ ! -a ~/.inputrc ]; then
+    echo "\$include /etc/inputrc" > ~/.inputrc
+fi
+echo "set completion-ignore-case On" >> ~/.inputrc
