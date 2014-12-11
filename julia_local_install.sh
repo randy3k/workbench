@@ -4,7 +4,6 @@
 set -e
 
 OLDWD=$PWD
-cd $HOME/julia_tmp
 
 cd $HOME/.local
 git clone https://github.com/JuliaLang/julia
