@@ -9,7 +9,7 @@ OLDWD=$PWD
 cd $HOME/.local
 git clone https://github.com/JuliaLang/julia || ( 
   cd julia
-  make clean
+  make cleanall
   git checkout master
   git reset
   git pull
