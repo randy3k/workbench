@@ -34,7 +34,7 @@ if [ "$(hostname)" == "gauss" ]; then
 
     function sapply {
         if [ -z "$@" ]; then
-            cmd="ps ar -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep"
+            cmd="ps ar -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command"
         else
             cmd="$@"
         fi
@@ -62,7 +62,7 @@ if [ "$(hostname)" == "gauss" ]; then
            for j in $hosts;
             do
              echo jobs for $NAME on $j;
-             ssh $j "$PS|head -n 1; $PS|grep $NAME|cut -c-$COLUMNS|grep -v -e cut -e sshd -e user -e grep";
+             ssh $j "$PS|head -n 1; $PS|grep $NAME";
             done;
         fi
     }
