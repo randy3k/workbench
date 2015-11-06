@@ -3,7 +3,7 @@
 # exit on error
 set -e
 
-JULIA_VER=0.3.3
+JULIA_VER=0.4.0
 
 OLDWD=$PWD
 cd $HOME/.local
