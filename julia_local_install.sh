@@ -13,6 +13,7 @@ git clone https://github.com/JuliaLang/julia || (
   git checkout master
   git reset
   git pull
+  cd ..
 )
 cd julia
 git checkout "$JULIA_VER"
