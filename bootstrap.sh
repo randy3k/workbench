@@ -34,8 +34,21 @@ curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc >
 # Rprofile
 curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile > ~/.Rprofile
 
+# git config
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig > ~/.gitconfig
+
 # inputrc, for case-insensitive tab completion
 if [ ! -a ~/.inputrc ]; then
     echo "\$include /etc/inputrc" > ~/.inputrc
 fi
 echo "set completion-ignore-case On" >> ~/.inputrc
+
+
+# local bin
+if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then
+cat >> ~/.profile <<'EOF'
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+EOF
+fi
