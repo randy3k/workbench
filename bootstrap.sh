@@ -15,10 +15,10 @@ EOF
 fi
 
 # bashrc
-if [[ ! -f ~/.bashrc ]]; then
-    touch ~/.bashrc
-else
+if [[ -f ~/.bashrc ]]; then
     cat ~/.bashrc | sed "s|~/.local/etc/bashrc|~/.local/etc/.bashrc|g" > ~/.bashrc
+else
+    touch ~/.bashrc
 fi
 if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
