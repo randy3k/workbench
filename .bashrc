@@ -18,7 +18,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias bootstrap='curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash'
+alias bootstrap='wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash'
 
 alias sudo='sudo '
 
