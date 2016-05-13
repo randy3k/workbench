@@ -10,7 +10,7 @@ env PREFIX="$HOME/.local" ./install.sh
 cd -
 ~/.local/bin/ruby-build 2.3.1 ~/.local/ruby-2.3.1
 
-if [[ -z $(echo $PATH | grep -o "$HOME/.local/ruby-2.3.1/bin") ]]; then
+if [[ -z $(echo $PATH | grep "$HOME/.local/ruby-2.3.1/bin") ]]; then
     export PATH="$HOME/.local/ruby-2.3.1/bin:$PATH"
 fi
 
