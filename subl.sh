@@ -3,7 +3,7 @@ mkdir -p .local/bin
 wget https://raw.githubusercontent.com/aurora/rmate/master/rmate -O $HOME/.local/bin/rmate
 chmod +x $HOME/.local/bin/rmate
 
-if [[ -z $(echo $PATH | grep -o $HOME/.local/) ]];
+if [[ -z $(echo $PATH | grep -o $HOME/.local/) ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
