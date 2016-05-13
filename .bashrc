@@ -68,7 +68,7 @@ if [ "$(hostname)" == "gauss" ]; then
     }
 else
     function git-branch-name {
-        echo `git symbolic-ref HEAD --short 2> /dev/null || (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/.*(\(.*\))/\1/')`
+        echo `git symbolic-ref HEAD --short 2> /dev/null || (git branch | sed -n '/\* /s///p')`
     }
 
     function git-dirty {
