@@ -5,10 +5,7 @@ set -e
 
 git clone https://github.com/rbenv/ruby-build.git ~/.ruby-build
 
-cd ~/.ruby-build
-env PREFIX="$HOME/.local" ./install.sh
-cd -
-~/.local/bin/ruby-build 2.3.1 ~/.local/ruby-2.3.1
+~/.ruby-build/bin/ruby-build 2.3.1 ~/.local/ruby-2.3.1
 
 if [[ -z $(echo $PATH | grep "$HOME/.local/ruby-2.3.1/bin") ]]; then
     export PATH="$HOME/.local/ruby-2.3.1/bin:$PATH"

@@ -4,6 +4,7 @@ if [[ ! -f ~/.bash_profile ]]; then
 fi
 if [[ -z `cat ~/.bash_profile | grep \~/.profile` ]]; then
 cat >> ~/.bash_profile <<'EOF'
+
 if [[ -f ~/.profile ]]; then
    source ~/.profile
 fi
@@ -22,6 +23,7 @@ else
 fi
 if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
+
 if [ -f ~/.local/etc/.bashrc ]; then
     source ~/.local/etc/.bashrc
 fi
@@ -47,6 +49,7 @@ echo "set completion-ignore-case On" >> ~/.inputrc
 # local bin
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then
 cat >> ~/.profile <<'EOF'
+
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi

@@ -9,12 +9,16 @@ fi
 
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then
 cat >> ~/.profile <<'EOF'
+
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 EOF
 fi
 
+if [[ -z `alias | grep "subl"` ]]; then
+    alias subl='rmate'
+fi
 
 if [[ -f ~/.bashrc ]] && [[ -z `cat ~/.bashrc | grep 'alias subl'` ]]; then
 cat >> ~/.bashrc <<'EOF'
