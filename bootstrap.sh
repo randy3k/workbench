@@ -29,13 +29,13 @@ EOF
 fi
 
 mkdir -p ~/.local/etc
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc > ~/.local/etc/.bashrc
+wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -O ~/.local/etc/.bashrc
 
 # Rprofile
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile > ~/.Rprofile
+wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.Rprofile
 
 # git config
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig > ~/.gitconfig
+wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
 
 # inputrc, for case-insensitive tab completion
 if [ ! -a ~/.inputrc ]; then
