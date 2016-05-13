@@ -16,7 +16,7 @@ fi
 
 # bashrc
 if [[ -f ~/.bashrc ]]; then
-    cat ~/.bashrc | sed "s|~/.local/etc/bashrc|~/.local/etc/.bashrc|g" > ~/.bashrc
+    sed -i "s|~/.local/etc/bashrc|~/.local/etc/.bashrc|g" ~/.bashrc
 else
     touch ~/.bashrc
 fi
