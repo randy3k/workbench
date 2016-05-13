@@ -8,6 +8,9 @@ wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl
 # install local ruby
 wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby_local_install.sh | bash
 
+# install linuxbrew
+wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
+
 # install local tmux
 wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/tmux_local_install.sh | bash
 
