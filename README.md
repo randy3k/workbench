@@ -5,11 +5,8 @@ wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/boot
 # install rmate and alias to subl
 wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
 
-# install rbenv
-wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rbenv.sh | bash
-
 # install local ruby
-wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby.sh | bash
+wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby_local_install.sh | bash
 
 # install local tmux
 wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/tmux_local_install.sh | bash
