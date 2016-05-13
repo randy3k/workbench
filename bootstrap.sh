@@ -18,34 +18,34 @@ fi
 if [[ ! -f ~/.bashrc ]]; then
     touch ~/.bashrc
 fi
-if [[ -z `cat ~/.bashrc | grep \~/.local/etc/bashrc` ]]; then
+if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
-if [ -f ~/.local/etc/bashrc ]; then
-    source ~/.local/etc/bashrc
+if [ -f ~/.local/etc/.bashrc ]; then
+    source ~/.local/etc/.bashrc
 fi
 EOF
 fi
 
 mkdir -p ~/.local/etc
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bashrc > ~/.local/etc/bashrc
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc > ~/.local/etc/.bashrc
 
 # zshrc
 if [[ ! -f ~/.zshrc ]]; then
     touch ~/.zshrc
 fi
-if [[ -z `cat ~/.zshrc | grep \~/.local/etc/zshrc` ]]; then
+if [[ -z `cat ~/.zshrc | grep \~/.local/etc/.zshrc` ]]; then
 cat >> ~/.zshrc <<'EOF'
-if [ -f ~/.local/etc/zshrc ]; then
-    source ~/.local/etc/zshrc
+if [ -f ~/.local/etc/.zshrc ]; then
+    source ~/.local/etc/.zshrc
 fi
 EOF
 fi
 mkdir -p ~/.local/etc
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zshrc > ~/.local/etc/zshrc
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.zshrc > ~/.local/etc/.zshrc
 
 
 # Rprofile
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/Rprofile > ~/.Rprofile
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.Rprofile > ~/.Rprofile
 
 
 # inputrc, for case-insensitive tab completion

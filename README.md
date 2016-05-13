@@ -10,7 +10,4 @@ curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/tmux_loca
 
 # julia only
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
-
-# zsh only
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/zsh_local_install.sh | bash
 ```

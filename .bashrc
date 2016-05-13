@@ -66,5 +66,53 @@ if [ "$(hostname)" == "gauss" ]; then
             done;
         fi
     }
+else
+    function git-branch-name {
+        echo `git symbolic-ref HEAD --short 2> /dev/null || (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/.*(\(.*\))/\1/')`
+    }
+
+    function git-dirty {
+        st=$(git status 2>/dev/null | tail -n 1)
+        if [[ ! $st =~ "working directory clean" ]]
+        then
+            echo "*"
+        fi
+    }
+
+    function git-unpushed {
+        brinfo=`git branch -v | grep "$(git-branch-name)"`
+        if [[ $brinfo =~ ("behind "([[:digit:]]*)) ]]
+        then
+            echo -n "-${BASH_REMATCH[2]}"
+        fi
+        if [[ $brinfo =~ ("ahead "([[:digit:]]*)) ]]
+        then
+            echo -n "+${BASH_REMATCH[2]}"
+        fi
+    }
+    function gitcolor {
+        st=$(git status 2>/dev/null | head -n 1)
+        if [[ ! $st == "" ]]
+        then
+            if [[ $(git-dirty) == "*" ]];
+            then
+                echo -e "\033[31m"
+            elif [[ $(git-unpushed) != "" ]];
+            then
+                echo -e "\033[33m"
+            else
+                echo -e "\033[32m"
+            fi
+        fi
+    }
+    function gitify {
+        st=$(git status 2>/dev/null | head -n 1)
+        if [[ ! $st == "" ]]
+        then
+            echo -e " ($(git-branch-name)$(git-dirty)$(git-unpushed))"
+        fi
+    }
+    PS1="\[\033[33m\](\h)\[\033[00m\]-\W\[\$(gitcolor)\]\$(gitify)\[\033[00m\]\$ "
+    PS1='\[\e]0;\a\]'"$PS1"
 
 fi
