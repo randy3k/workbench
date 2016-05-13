@@ -32,8 +32,7 @@ mkdir -p ~/.local/etc
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc > ~/.local/etc/.bashrc
 
 # Rprofile
-curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.Rprofile > ~/.Rprofile
-
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile > ~/.Rprofile
 
 # inputrc, for case-insensitive tab completion
 if [ ! -a ~/.inputrc ]; then
