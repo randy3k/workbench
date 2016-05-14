@@ -37,7 +37,7 @@ wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -
 wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.Rprofile
 
 # git config
-wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.gitconfig -O ~/.gitconfig
+wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
 
 # inputrc, for case-insensitive tab completion
 if [ ! -a ~/.inputrc ]; then
