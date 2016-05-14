@@ -3,25 +3,10 @@
 # exit on error
 set -e
 
-JULIA_VER=v0.4.0
-
-OLDWD=$PWD
-cd $HOME/.local
-git clone https://github.com/JuliaLang/julia || (
-  cd julia
-  make cleanall
-  git checkout master
-  git reset
-  git pull
-  cd ..
-)
-cd julia
-git checkout "$JULIA_VER"
-echo 'OPENBLAS_DYNAMIC_ARCH = 0' >> Make.user
-make -j8
-make install prefix=~/.local/julia-$JULIA_VER
-
-ln -sf $HOME/.local/julia-$JULIA_VER/bin/julia $HOME/.local/bin/julia
-
-cd "$OLDWD"
-echo "$HOME/.local/bin/julia is now available. You can optionally add $HOME/.local/bin to your PATH."
+URL="https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4.5-linux-x86_64.tar.gz"
+DIR=`mktemp -d`
+wget "$URL" -O "$DIR/julia.tar.gz"
+tar xzfv "$DIR/julia.tar.gz" -C "$DIR"
+JULIADIR=`find "$DIR" -maxdepth 2 -name "julia*" -type d | head -n 1`
+mv "$JULIADIR" "$HOME/.local/julia-v0.4.5"
+ln -s "$HOME/.local/julia-v0.4.5/bin/julia" "$HOME/.local/bin/julia"
