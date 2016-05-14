@@ -18,7 +18,25 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias bootstrap='wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash'
+function bootstrap {
+    case "$1" in
+        subl)
+            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
+        ;;
+        ruby)
+            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby_local_install.sh | bash
+        ;;
+        linuxbrew)
+            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
+        ;;
+        julia)
+            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
+        ;;
+        *)
+            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
+        ;;
+    esac
+}
 
 alias sudo='sudo '
 
