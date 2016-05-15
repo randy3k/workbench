@@ -39,13 +39,6 @@ wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.R
 # git config
 wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
 
-# inputrc, for case-insensitive tab completion
-if [ ! -a ~/.inputrc ]; then
-    echo "\$include /etc/inputrc" > ~/.inputrc
-fi
-echo "set completion-ignore-case On" >> ~/.inputrc
-
-
 # local bin
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then
 cat >> ~/.profile <<'EOF'
