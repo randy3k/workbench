@@ -29,11 +29,13 @@ alias p='ipython'
 alias j='julia'
 
 # bash completion
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous on"
-bind "set colored-stats on"
-bind "set colored-completion-prefix on"
-bind TAB:menu-complete
+if [[ $- == *i* ]] ; then
+    bind "set completion-ignore-case on"
+    bind "set show-all-if-ambiguous on"
+    bind "set colored-stats on"
+    bind "set colored-completion-prefix on"
+    bind TAB:menu-complete
+fi
 
 function bootstrap {
     case "$1" in
