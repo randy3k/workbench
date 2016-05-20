@@ -54,6 +54,9 @@ function bootstrap {
         linuxbrew)
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
         ;;
+        conda)
+            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
+        ;;
         julia)
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
         ;;

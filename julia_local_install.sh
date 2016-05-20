@@ -10,3 +10,4 @@ tar xzfv "$DIR/julia.tar.gz" -C "$DIR"
 JULIADIR=`find "$DIR" -maxdepth 2 -name "julia*" -type d | head -n 1`
 mv "$JULIADIR" "$HOME/.local/julia-v0.4.5"
 ln -s "$HOME/.local/julia-v0.4.5/bin/julia" "$HOME/.local/bin/julia"
+rm -r "$DIR"
