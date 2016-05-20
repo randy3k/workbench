@@ -37,6 +37,12 @@ if [[ $- == *i* ]] ; then
     bind TAB:menu-complete
 fi
 
+# alt arrow keys
+if [[ $- == *i* ]] ; then
+    bind '"\e[1;3C": forward-word'
+    bind '"\e[1;3D": backward-word'
+fi
+
 function bootstrap {
     case "$1" in
         subl)
