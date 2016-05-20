@@ -9,7 +9,10 @@ bootstrap subl
 bootstrap ruby
 
 # install linuxbrew
-bootstrap linuxbrew
+bootstrap brew
+
+# install miniconda
+bootstrap conda
 
 # install local tmux
 bootstrap tmux
