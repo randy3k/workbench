@@ -55,7 +55,9 @@ function bootstrap {
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
         ;;
         conda)
-            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
+            DIR=$(mktemp -d)
+            wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh -O "$DIR/conda.sh" && bash "$DIR/conda.sh"
+            rm "$DIR/conda.sh" 2> /dev/null
         ;;
         julia)
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
