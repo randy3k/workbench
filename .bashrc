@@ -55,9 +55,7 @@ function bootstrap {
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
         ;;
         conda)
-            DIR=$(mktemp -d)
-            wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh -O "$DIR/conda.sh" && bash "$DIR/conda.sh"
-            rm "$DIR/conda.sh" 2> /dev/null
+            wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
         ;;
         julia)
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
@@ -66,7 +64,7 @@ function bootstrap {
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
         ;;
     esac
-    source ~/.bashrc
+    source ~/.bash_profile
 }
 
 # for gauss

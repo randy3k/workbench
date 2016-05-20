@@ -9,7 +9,7 @@ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O "$
 
 chmod +x "$DIR/miniconda.sh"
 
-"$DIR/miniconda.sh"
+"$DIR/miniconda.sh" -b
 
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/miniconda3/bin'` ]]; then
 cat >> ~/.profile <<'EOF'
