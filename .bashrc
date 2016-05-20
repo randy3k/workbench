@@ -66,6 +66,7 @@ function bootstrap {
             wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
         ;;
     esac
+    source ~/.bashrc
 }
 
 # for gauss
