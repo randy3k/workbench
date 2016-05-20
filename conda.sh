@@ -5,7 +5,7 @@ set -e
 
 DIR=$(mktemp -d)
 
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o "$DIR/miniconda.sh"
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O "$DIR/miniconda.sh"
 
 bash "$DIR/miniconda.sh"
 
