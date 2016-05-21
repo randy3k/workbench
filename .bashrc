@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # remove mac directory title
 if [[ $- == *i* ]] ; then
     printf '\e]7;%s\a'

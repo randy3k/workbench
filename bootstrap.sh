@@ -2,6 +2,7 @@
 if [[ ! -f ~/.bash_profile ]]; then
     touch ~/.bash_profile
 fi
+
 if [[ -z `cat ~/.bash_profile | grep \~/.profile` ]]; then
 cat >> ~/.bash_profile <<'EOF'
 
@@ -21,6 +22,10 @@ if [[ -f ~/.bashrc ]]; then
 else
     touch ~/.bashrc
 fi
+
+mkdir -p ~/.local/etc
+wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -O ~/.local/etc/.bashrc
+
 if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
 
@@ -30,17 +35,14 @@ fi
 EOF
 fi
 
-mkdir -p ~/.local/etc
-wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -O ~/.local/etc/.bashrc
 
-# Rprofile
-wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.Rprofile
+# .profile
 
-# git config
-wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
+if [[ ! -f ~/.profile ]]; then
+    touch ~/.profile
+fi
 
-# local bin
-if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then
+if [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then
 cat >> ~/.profile <<'EOF'
 
 if [ -d "$HOME/.local/bin" ] ; then
@@ -48,3 +50,9 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 EOF
 fi
+
+# Rprofile
+wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.Rprofile
+
+# git config
+wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
