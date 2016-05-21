@@ -12,8 +12,8 @@ LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;
 
 # aliases
 alias rmtex='rm -f *.aux *.dvi *.lis *.log *.blg *.bbl *.toc *.idx *.ind *.ilg *.thm *.out *.fdb_latexmk *.fls *.synctex.gz *.nav *.snm'
-alias sudo='sudo '
-alias rsync="rsync -av --exclude \".*\""
+# alias sudo='sudo '
+# alias rsync="rsync -av --exclude \".*\""
 alias nps='ps ar -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command'
 alias ls='ls --color=auto'
 alias ll='ls -alF'
