@@ -1,3 +1,8 @@
+# remove mac directory title
+if [[ $- == *i* ]] ; then
+    printf '\e]7;%s\a'
+fi
+
 # ignore ctrl-d
 IGNOREEOF=1
 
