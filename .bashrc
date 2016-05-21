@@ -1,5 +1,3 @@
-# remove mac directory title
-printf '\e]7;%s\a'
 # ignore ctrl-d
 IGNOREEOF=1
 
