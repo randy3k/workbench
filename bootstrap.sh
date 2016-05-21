@@ -56,3 +56,5 @@ wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.R
 
 # git config
 wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
+
+echo "bootstrap done"
