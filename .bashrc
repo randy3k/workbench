@@ -55,22 +55,22 @@ fi
 function bootstrap {
     case "$1" in
         subl)
-            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
+            curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
         ;;
         ruby)
-            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby_local_install.sh | bash
+            curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby_local_install.sh | bash
         ;;
         brew)
-            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
+            curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
         ;;
         conda)
-            wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
+            curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
         ;;
         julia)
-            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
+            curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
         ;;
         *)
-            wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
+            curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
         ;;
     esac
     source ~/.bash_profile

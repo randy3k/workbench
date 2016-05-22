@@ -24,7 +24,7 @@ else
 fi
 
 mkdir -p ~/.local/etc
-wget https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -O ~/.local/etc/.bashrc
+curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -o ~/.local/etc/.bashrc
 
 if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
@@ -52,9 +52,9 @@ EOF
 fi
 
 # Rprofile
-wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -O ~/.Rprofile
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -o ~/.Rprofile
 
 # git config
-wget https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -O ~/.gitconfig
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -o ~/.gitconfig
 
 echo "bootstrap done"

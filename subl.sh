@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir -p .local/bin
-wget https://raw.githubusercontent.com/aurora/rmate/master/rmate -O $HOME/.local/bin/rmate
+curl https://raw.githubusercontent.com/aurora/rmate/master/rmate -o $HOME/.local/bin/rmate
 chmod +x $HOME/.local/bin/rmate
 
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; then

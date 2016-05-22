@@ -1,6 +1,6 @@
 ```
 # install bootstrap
-wget -qO- https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
+curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
 
 # install rmate and alias to subl
 bootstrap subl
