@@ -17,12 +17,6 @@ EOF
 fi
 
 # bashrc
-if [[ -f ~/.bashrc ]]; then
-    sed -i "s|~/.local/etc/bashrc|~/.local/etc/.bashrc|g" ~/.bashrc
-else
-    touch ~/.bashrc
-fi
-
 mkdir -p ~/.local/etc
 curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/.bashrc -o ~/.local/etc/.bashrc
 
@@ -37,7 +31,6 @@ fi
 
 
 # .profile
-
 if [[ ! -f ~/.profile ]]; then
     touch ~/.profile
 fi
