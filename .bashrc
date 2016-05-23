@@ -20,7 +20,8 @@ PS1='\[\e]0;\u@\h\a\]'"$PS1"
 LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;31:*.rpm=90'
 
 # aliases
-NPS='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER" | awk '"'"'$3 > 1'"'"' | if [[ -t 1 ]]; then (cat | cut -c 1-$COLUMNS); else cat; fi'
+NPS='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER"'
+NPS="$NPS | "'awk '"'"'$3 > 1'"'"' | if [[ -t 1 ]]; then (cat | cut -c 1-$COLUMNS); else cat; fi'
 alias nps="$NPS"
 alias rmtex='rm -f *.aux *.dvi *.lis *.log *.blg *.bbl *.toc *.idx *.ind *.ilg *.thm *.out
 *.fdb_latexmk *.fls *.synctex.gz *.nav *.snm'
@@ -92,37 +93,25 @@ if [ "$(hostname)" == "gauss" ]; then
 
     function sapply {
         if [ -z "$@" ]; then
-            cmd="$NPS"
+            cmd="export COLUMNS=$COLUMNS; $NPS"
         else
             cmd="$@"
         fi
         # echo $cmd
-        hosts=`sinfo|grep -v PARTITION|grep c0|grep -v down|awk {'print $6'}|sed -r 's/(\[|,)([0-9]+)-([0-9]+)/\1$(echo {\2..\3})/g;s/^/echo /'|bash|sed -r 's/ /,/g;s/\[/{/;s/\]/}/;s/^/echo /'|bash|sed 's/\s/\n/g'|sort|uniq`
+        hosts=`sinfo|grep -v ^PARTITION|grep c0|grep -v down|awk {'print $6'}|sed -r 's/(\[|,)([0-9]+)-([0-9]+)/\1$(echo {\2..\3})/g;s/^/echo /'|bash|sed -r 's/ /,/g;s/\[/{/;s/\]/}/;s/^/echo /'|bash|sed 's/\s/\n/g'|sort|uniq`
         for j in $hosts; do echo $j; ssh $j "$cmd"; done;
     }
+
     alias killr="killall -9 -u rcslai R; sapply 'killall -9 -u rcslai R'"
 
-    function myjobs {
+    function sjobs {
         if [ -z $1 ]
          then
           NAME=$LOGNAME
          else
           NAME=$1
          fi
-        hosts=`squeue|grep -v PS|grep c0|grep -w $NAME|awk {'print $8'}|sed -r 's/(\[|,)([0-9]+)-([0-9]+)/\1$(echo {\2..\3})/g;s/^/echo /'|bash|sed -r 's/ /,/g;s/\[/{/;s/\]/}/;s/^/echo /'|bash|sed 's/\s/\n/g'|sort|uniq`
-        echo -n `date` "- "
-        if [ -z "$hosts" ]
-         then
-          echo $NAME has no running jobs
-         else
-          echo $NAME has jobs running on: $hosts
-          PS="$NPS"
-           for j in $hosts;
-            do
-             echo jobs for $NAME on $j;
-             ssh $j "$PS|head -n 1; $PS|grep $NAME";
-            done;
-        fi
+        sapply "export COLUMNS=$COLUMNS; $NPS | grep $NAME | grep -v 'grep'"
     }
 else
     function git-branch-name {
