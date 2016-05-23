@@ -105,14 +105,14 @@ if [ "$(hostname)" == "gauss" ]; then
     alias killr="killall -9 -u rcslai R; sapply 'killall -9 -u rcslai R'"
 
     function sjobs {
-        if [ -z $1 ]
-         then
-          NAME=$LOGNAME
-         else
-          NAME=$1
-         fi
+        if [ -z $1 ]; then
+            NAME=$LOGNAME
+        else
+            NAME=$1
+        fi
         sapply "export COLUMNS=$COLUMNS; $NPS0 | grep $NAME | grep -v 'grep' | $NPS1"
     }
+
 else
     function git-branch-name {
         echo `git symbolic-ref HEAD --short 2> /dev/null || (git branch | sed -n 's/\* (*\([^)]*\))*/\1/p')`
