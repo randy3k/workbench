@@ -90,7 +90,7 @@ if [ "$(hostname)" == "gauss" ]; then
 
     function sapply {
         if [ -z "$@" ]; then
-            cmd="ps ar -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command"
+            cmd='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER" | awk -v "threshold=0.1" '\''$3 > 1'\'' | cut -c 1-$COLUMNS'
         else
             cmd="$@"
         fi
