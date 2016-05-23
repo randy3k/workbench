@@ -20,9 +20,9 @@ PS1='\[\e]0;\u@\h\a\]'"$PS1"
 LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;31:*.rpm=90'
 
 # aliases
-NPS='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER"'
-NPS="$NPS | "'awk '"'"'$3 > 1'"'"' | if [[ -t 1 ]]; then (cat | cut -c 1-$COLUMNS); else cat; fi'
-alias nps="$NPS"
+NPS0='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER"'
+NPS1='awk '"'"'$3 > 1'"'"' | if [[ -t 1 ]]; then (cat | cut -c 1-$COLUMNS); else cat; fi'
+alias nps="$NPS0 | $NPS1"
 alias rmtex='rm -f *.aux *.dvi *.lis *.log *.blg *.bbl *.toc *.idx *.ind *.ilg *.thm *.out
 *.fdb_latexmk *.fls *.synctex.gz *.nav *.snm'
 # alias sudo='sudo '
@@ -93,7 +93,7 @@ if [ "$(hostname)" == "gauss" ]; then
 
     function sapply {
         if [ -z "$@" ]; then
-            cmd="export COLUMNS=$COLUMNS; $NPS"
+            cmd="export COLUMNS=$COLUMNS; $NPS0 | $NPS1"
         else
             cmd="$@"
         fi
@@ -111,7 +111,7 @@ if [ "$(hostname)" == "gauss" ]; then
          else
           NAME=$1
          fi
-        sapply "export COLUMNS=$COLUMNS; $NPS | grep $NAME | grep -v 'grep'"
+        sapply "export COLUMNS=$COLUMNS; $NPS0 | grep $NAME | grep -v 'grep' | $NPS1"
     }
 else
     function git-branch-name {
