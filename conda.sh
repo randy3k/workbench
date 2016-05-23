@@ -15,7 +15,9 @@ if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/miniconda3/bin'` ]
 cat >> ~/.profile <<'EOF'
 
 # miniconda
-export PATH="$HOME/miniconda3/bin:$PATH"
+if [ -d "$HOME/miniconda3/bin" ] && [ -z `echo "$PATH" | grep "$HOME/miniconda3/bin"` ]; then
+    export PATH="$HOME/miniconda3/bin:$PATH"
+fi
 EOF
 fi
 
