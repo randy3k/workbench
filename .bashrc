@@ -20,7 +20,7 @@ PS1='\[\e]0;\u@\h\a\]'"$PS1"
 LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;31:*.rpm=90'
 
 # aliases
-alias nps='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER" | awk -v "threshold=0.1" '"'"'$3 > 1'"'"' | cut -c 1-$COLUMNS'
+alias nps='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER" | awk -v "threshold=0.1" '"'"'$3 > 1'"'"''
 alias rmtex='rm -f *.aux *.dvi *.lis *.log *.blg *.bbl *.toc *.idx *.ind *.ilg *.thm *.out *.fdb_latexmk *.fls *.synctex.gz *.nav *.snm'
 # alias sudo='sudo '
 # alias rsync="rsync -av --exclude \".*\""
@@ -90,7 +90,7 @@ if [ "$(hostname)" == "gauss" ]; then
 
     function sapply {
         if [ -z "$@" ]; then
-            cmd='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER" | awk -v "threshold=0.1" '\''$3 > 1'\'' | cut -c 1-$COLUMNS'
+            cmd='ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command | grep -v "^USER" | awk -v "threshold=0.1" '\''$3 > 1'\'''
         else
             cmd="$@"
         fi
