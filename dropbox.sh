@@ -17,6 +17,6 @@ if [ "$(hostname)" == "marconi" ]; then
     patchelf --set-interpreter  $HOME/.linuxbrew/lib/ld.so dropbox
 
     for f in `find . -name "*.so*"`; do
-        patchelf --set-rpath  '$ORIGIN':$PWD:/home/cslai/.linuxbrew/lib "$f"
+        patchelf --set-rpath '$ORIGIN':$PWD:/home/cslai/.linuxbrew/lib "$f"
     done
 fi
