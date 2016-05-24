@@ -27,6 +27,7 @@ function sapply {
 alias killr="killall -9 -u rcslai R; sapply 'killall -9 -u rcslai R'"
 
 function sjobs {
+    eval $PS_COMMAND | head -n 1
     if [ -z $1 ]; then
         NAME=$LOGNAME
     else
