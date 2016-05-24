@@ -3,9 +3,9 @@
 # exit on error
 set -e
 
-cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+cd ~ && curl "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
-wget "https://www.dropbox.com/download?dl=packages/dropbox.py" -O ~/.local/bin/dropbox
+curl "https://www.dropbox.com/download?dl=packages/dropbox.py" -o ~/.local/bin/dropbox
 chmod +x ~/.local/bin/dropbox
 
 if [ "$(hostname)" == "marconi" ]; then
