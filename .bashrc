@@ -34,6 +34,7 @@ LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;
 PS_COMMAND="ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command"
 alias nps="$PS_COMMAND"'|awk '"'"'NR==1||$3>0.5'"'"'|if [[ -t 1 ]];then (cat | cut -c 1-$COLUMNS);else cat;fi'
 alias rsync="rsync -av --exclude \".*\""
+alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

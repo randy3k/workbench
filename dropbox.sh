@@ -10,12 +10,13 @@ chmod +x ~/.local/bin/dropbox
 
 if [ "$(hostname)" == "marconi" ]; then
     sed -i -e 's|#!/usr/bin/python|#!/home/cslai/.linuxbrew/bin/python|g' ~/.local/bin/dropbox
+    sed -i -e '2s/^/export DISPLAY=\n/' ~/.dropbox-dist/dropboxd
 
     cd /home/cslai/.dropbox-dist/dropbox-lnx*
 
+    patchelf --set-interpreter  $HOME/.linuxbrew/lib/ld.so dropbox
+
     for f in `find . -name "*.so*"`; do
-        echo $f
-        patchelf --set-interpreter  ~/.linuxbrew/lib/ld.so "$f" 2> /dev/null
-        patchelf --set-rpath  '$ORIGIN:'$PWD':/home/cslai/.linuxbrew/lib' "$f" 2> /dev/null
+        patchelf --set-rpath  '$ORIGIN':$PWD:/home/cslai/.linuxbrew/lib "$f"
     done
 fi
