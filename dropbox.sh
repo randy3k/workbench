@@ -9,7 +9,7 @@ curl -L "https://www.dropbox.com/download?dl=packages/dropbox.py" -o ~/.local/bi
 chmod +x ~/.local/bin/dropbox
 
 if [ "$(hostname)" == "marconi" ]; then
-    sed -i -e 's|#!/usr/bin/python|#!/home/cslai/.linuxbrew/bin/python|g' ~/.local/bin/dropbox
+    sed -i -e '1s|^#!/usr/bin/python|#!/usr/bin/env python2|' ~/.local/bin/dropbox
     sed -i -e '2s/^/export DISPLAY=\n/' ~/.dropbox-dist/dropboxd
 
     cd /home/cslai/.dropbox-dist/dropbox-lnx*
