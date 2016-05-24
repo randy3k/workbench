@@ -11,7 +11,7 @@ PS1='\[\e]0;\u@\h\a\]'"$PS1"
 
 function slurm_hosts {
     HOST=$(sinfo|grep -v ^PARTITION|grep c0|grep -v down|awk {'print $6'})
-    for h in $(echo "$HOST" | grep -o '[0-9]\+-[0-9]\+\|[0-9][0-9]'); do
+    for h in $(grep -o '[0-9]\+-[0-9]\+\|[0-9][0-9]' <<< "$HOST"); do
         if grep -q '[0-9]\+-[0-9]\+' <<< "$h"; then
             seq $(sed 's/-/ /' <<< "$h") | sed 's/ /\n/g'
         else
