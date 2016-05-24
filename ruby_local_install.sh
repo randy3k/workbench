@@ -18,4 +18,4 @@ fi
 EOF
 fi
 
-rm -r ~/.ruby-build
+rm -rf ~/.ruby-build
