@@ -55,7 +55,9 @@ curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -o ~/.
 
 # write bootstrap function
 mkdir -p ~/.local/bin
-cat >> ~/.local/bin/bootstrap <<'EOF'
+cat > ~/.local/bin/bootstrap <<'EOF'
+#!/usr/bin/env bash
+
 case "$1" in
     subl)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
