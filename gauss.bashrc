@@ -9,6 +9,16 @@ function slurm_badge {
 PS1="\[\033[33m\](\h)\[\033[00m\]\[\033[32m\]$(slurm_badge)\[\033[00m\]-\W\\\$ "
 PS1='\[\e]0;\u@\h\a\]'"$PS1"
 
+function slurm_hosts {
+    HOST=$(sinfo|grep -v ^PARTITION|grep c0|grep -v down|awk {'print $6'})
+    for h in $(echo "$HOST" | grep -o '[0-9]\+-[0-9]\+\|[0-9][0-9]'); do
+        if grep -q '[0-9]\+-[0-9]\+' <<< "$h"; then
+            seq $(sed 's/-/ /' <<< "$h") | sed 's/ /\n/g'
+        else
+            echo "$h"
+        fi
+    done |sort|uniq | sed "s/^/c0-/"
+}
 
 function sapply {
     if [ -z "$@" ]; then
@@ -17,8 +27,7 @@ function sapply {
         cmd="$@"
     fi
     # echo $cmd
-    hosts=`sinfo|grep -v ^PARTITION|grep c0|grep -v down|awk {'print $6'}|sed -r 's/(\[|,)([0-9]+)-([0-9]+)/\1$(echo {\2..\3})/g;s/^/echo /'|bash|sed -r 's/ /,/g;s/\[/{/;s/\]/}/;s/^/echo /'|bash|sed 's/\s/\n/g'|sort|uniq`
-    for j in $hosts; do 
+    for j in $(slurm_hosts); do 
         echo $j
         ssh $j "$cmd" | if [[ -t 1 ]];then (cat | cut -c 1-$COLUMNS);else cat;fi
     done
