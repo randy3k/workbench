@@ -17,3 +17,5 @@ if [ -d "$HOME/.local/ruby-2.3.1/bin" ] && [ -z `echo "$PATH" | grep "$HOME/.loc
 fi
 EOF
 fi
+
+rm -r ~/.ruby-build
