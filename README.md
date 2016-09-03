@@ -14,9 +14,12 @@ bootstrap brew
 # install miniconda
 bootstrap conda
 
-# install local tmux
-bootstrap tmux
-
 # install local julia
 bootstrap julia
+
+# install dropbox
+bootstrap dropbox
+
+# bootstrap
+bootstrap
 ```
