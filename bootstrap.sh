@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# exit on error
+set -e
+
 # bash_profile
 if [[ ! -f ~/.bash_profile ]]; then
     touch ~/.bash_profile
