@@ -55,6 +55,10 @@ fi
 # Rprofile
 curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -o ~/.Rprofile
 
+# .tmux.conf
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.tmux.conf -o ~/.tmux.conf
+
+
 # git config
 curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -o ~/.gitconfig
 
