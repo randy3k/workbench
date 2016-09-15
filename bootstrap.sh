@@ -83,9 +83,6 @@ case "$1" in
     julia)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
     ;;
-    vim)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/vimrc.sh | bash
-    ;;
     nvim)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/nvimrc.sh | bash
     ;;
