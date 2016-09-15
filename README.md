@@ -17,9 +17,6 @@ bootstrap conda
 # install local julia
 bootstrap julia
 
-# install vim config
-bootstrap vim
-
 # install nvim config
 bootstrap nvim
 

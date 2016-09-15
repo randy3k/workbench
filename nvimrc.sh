@@ -7,8 +7,11 @@ curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.nvimrc -o ~/.nvi
 
 mkdir -p ~/.config/nvim/bundle
 
-ln -s ~/.nvimrc ~/.config/nvim/init.vim
+rm ~/.nvimrc
+ln -sf ~/.nvimrc ~/.config/nvim/init.vim
 
 cd ~/.config/nvim/bundle
+
+rm -rf ~/.config/nvim/bundle/Vundle.vim
 
 git clone https://github.com/VundleVim/Vundle.vim
