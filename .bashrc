@@ -19,6 +19,9 @@ bind TAB:menu-complete
 # alt arrow keys
 bind '"\e[1;3C": forward-word'
 bind '"\e[1;3D": backward-word'
+# ctrl arrow keys
+bind '"\C-f": forward-word'
+bind '"\C-b": backward-word'
 
 # ignore ctrl-d
 IGNOREEOF=1
