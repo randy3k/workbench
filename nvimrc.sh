@@ -7,7 +7,7 @@ curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.nvimrc -o ~/.nvi
 
 mkdir -p ~/.config/nvim/bundle
 
-rm ~/.config/nvim/init.vim
+[ -f '~/.config/nvim/init.vim' ] && rm ~/.config/nvim/init.vim
 ln -sf ~/.nvimrc ~/.config/nvim/init.vim
 
 cd ~/.config/nvim/bundle
