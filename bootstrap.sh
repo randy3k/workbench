@@ -72,25 +72,28 @@ case "$1" in
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
     ;;
     ruby)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby_local_install.sh | bash
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby.sh | bash
     ;;
     brew)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/linuxbrew.sh | bash
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/brew.sh | bash
     ;;
     conda)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
     ;;
     julia)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia_local_install.sh | bash
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia.sh | bash
     ;;
-    nvim)
+    nvimrc)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/nvimrc.sh | bash
     ;;
     dropbox)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/dropbox.sh | bash
     ;;
-    *)
+    init)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
+    ;;
+    *)
+        echo "Usage: bootstrap [init|subl|ruby|brew|conda|julia|nvimrc|dropbox]"
     ;;
 esac
 source ~/.bash_profile
