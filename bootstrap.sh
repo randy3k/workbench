@@ -95,11 +95,11 @@ case "$1" in
         curl -s https://github.com/randy3k.keys >> ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/authorized_keys
     ;;
-    init)
+    reload)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
     ;;
     *)
-        echo "Usage: bootstrap [init|subl|ruby|brew|conda|julia|nvimrc|dropbox|sshkey]"
+        echo "Usage: bootstrap [reload|subl|ruby|brew|conda|julia|nvimrc|dropbox|sshkey]"
     ;;
 esac
 source ~/.bash_profile
