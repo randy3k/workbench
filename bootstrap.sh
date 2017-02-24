@@ -89,11 +89,17 @@ case "$1" in
     dropbox)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/dropbox.sh | bash
     ;;
+    sshkey)
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        curl -s https://github.com/randy3k.keys >> ~/.ssh/authorized_keys
+        chmod 700 ~/.ssh/authorized_keys
+    ;;
     init)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
     ;;
     *)
-        echo "Usage: bootstrap [init|subl|ruby|brew|conda|julia|nvimrc|dropbox]"
+        echo "Usage: bootstrap [init|subl|ruby|brew|conda|julia|nvimrc|dropbox|sshkey]"
     ;;
 esac
 source ~/.bash_profile
