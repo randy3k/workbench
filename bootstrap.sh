@@ -93,7 +93,7 @@ case "$1" in
         mkdir -p ~/.ssh
         chmod 700 ~/.ssh
         curl -s https://github.com/randy3k.keys >> ~/.ssh/authorized_keys
-        chmod 700 ~/.ssh/authorized_keys
+        chmod 600 ~/.ssh/authorized_keys
     ;;
     init)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
