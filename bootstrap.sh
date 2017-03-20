@@ -83,6 +83,9 @@ case "$1" in
     julia)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia.sh | bash
     ;;
+    julia-dev)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia.sh | bash /dev/stdin dev
+    ;;
     nvimrc)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/nvimrc.sh | bash
     ;;
