@@ -102,7 +102,7 @@ case "$1" in
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
     ;;
     *)
-        echo "Usage: bootstrap [reload|subl|ruby|brew|conda|julia|nvimrc|dropbox|sshkey]"
+        echo "Usage: bootstrap [reload|subl|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
     ;;
 esac
 source ~/.bash_profile
