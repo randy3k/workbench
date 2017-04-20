@@ -101,6 +101,7 @@ PROMPT_COMMAND='reset_terminal_title'
 function reset_terminal_title {
     printf "\033]0;%s\007" "${HOSTNAME%%.*}"
     printf '\e]7;\a'
+    printf "\033]1337;CurrentDir=''\007"
 }
 
 function iterm2_print_user_vars {
