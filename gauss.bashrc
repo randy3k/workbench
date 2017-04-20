@@ -7,7 +7,6 @@ function slurm_badge {
     fi
 }
 PS1="\[\033[33m\](\h)\[\033[00m\]\[\033[32m\]$(slurm_badge)\[\033[00m\]-\W\\\$ "
-PS1='\[\e]0;\u@\h\a\]'"$PS1"
 
 function slurm_hosts {
     HOST=$(sinfo|grep -v ^PARTITION|grep c0|grep -v down|awk {'print $6'})
