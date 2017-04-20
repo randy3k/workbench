@@ -4,11 +4,6 @@ case $- in
       *) return;;
 esac
 
-# remove mac directory title
-if [[ $- == *i* ]] ; then
-    printf '\e]7;%s\a'
-fi
-
 # bash completion
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
@@ -100,4 +95,14 @@ function gitify {
     fi
 }
 PS1="\[\033[33m\](\h)\[\033[00m\]-\W\[\$(gitcolor)\]\$(gitify)\[\033[00m\]\$ "
-PS1='\[\e]0;\a\]'"$PS1"
+
+PROMPT_COMMAND='reset_terminal_title'
+
+function reset_terminal_title {
+    printf "\033]0;%s\007" "${HOSTNAME%%.*}"
+    printf '\e]7;\a'
+}
+
+function iterm2_print_user_vars {
+    printf "\033]1337;CurrentDir=''\007"
+}
