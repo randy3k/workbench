@@ -6,7 +6,7 @@ esac
 
 # remove mac directory title
 if [[ $- == *i* ]] ; then
-    printf '\e]0;\a'
+    printf '\e]7;%s\a'
 fi
 
 # bash completion
