@@ -14,8 +14,6 @@ if [[ -f ~/.iterm2_shell_integration.bash ]]; then
     function iterm2_print_user_vars {
         printf "\033]1337;CurrentDir=''\007"
     }
-
-   source ~/.iterm2_shell_integration.bash
 fi
 EOF
 fi
