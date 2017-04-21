@@ -17,6 +17,9 @@ bind '"\e[1;3D": backward-word'
 # ctrl arrow keys
 bind '"\C-f": forward-word'
 bind '"\C-b": backward-word'
+# substring search
+bind '"\e[A": history-search-backward'
+bind '"\e[B":history-search-forward'
 
 # ignore ctrl-d
 IGNOREEOF=1
@@ -49,51 +52,45 @@ alias jnb='jupyter notebook'
 # to allow sudo subl
 alias sudo='sudo '
 
+# prompt
 function git-branch-name {
     echo `git symbolic-ref HEAD --short 2> /dev/null || (git branch | sed -n 's/\* (*\([^)]*\))*/\1/p')`
 }
-
 function git-dirty {
-    st=$(git status 2>/dev/null | tail -n 1)
-    if [[ ! $st =~ "working directory clean" ]]
-    then
-        echo "*"
-    fi
+    [[ `wc -l <<< "$1" ` -eq 1  ]] || echo "*"
 }
-
 function git-unpushed {
-    brinfo=`git branch -v | grep "$(git-branch-name)"`
-    if [[ $brinfo =~ ("behind "([[:digit:]]*)) ]]
+    if [[ "$1" =~ ("behind "([[:digit:]]*)) ]]
     then
         echo -n "-${BASH_REMATCH[2]}"
     fi
-    if [[ $brinfo =~ ("ahead "([[:digit:]]*)) ]]
+    if [[ "$1" =~ ("ahead "([[:digit:]]*)) ]]
     then
         echo -n "+${BASH_REMATCH[2]}"
     fi
 }
 function gitcolor {
-    st=$(git status 2>/dev/null | head -n 1)
-    if [[ ! $st == "" ]]
+    st=$(git status -b --porcelain 2>/dev/null)
+    [[ $? -eq 0 ]] || return
+
+    if [[ $(git-dirty "$st") == "*" ]];
     then
-        if [[ $(git-dirty) == "*" ]];
-        then
-            echo -e "\033[31m"
-        elif [[ $(git-unpushed) != "" ]];
-        then
-            echo -e "\033[33m"
-        else
-            echo -e "\033[32m"
-        fi
+        echo -e "\033[31m"
+    elif [[ $(git-unpushed "$st") != "" ]];
+    then
+        echo -e "\033[33m"
+    else
+        echo -e "\033[32m"
     fi
 }
 function gitify {
-    st=$(git status 2>/dev/null | head -n 1)
-    if [[ ! $st == "" ]]
-    then
-        echo -e " ($(git-branch-name)$(git-dirty)$(git-unpushed))"
-    fi
+    st=$(git status -b --porcelain 2>/dev/null)
+    [[ $? -eq 0 ]] || return
+    dirty=$(git-dirty "$st")
+    unpushed=$(git-unpushed "$st")
+    echo -e " ($(git-branch-name)$dirty$unpushed)"
 }
+
 PS1="\[\033[33m\](\h)\[\033[00m\]-\W\[\$(gitcolor)\]\$(gitify)\[\033[00m\]\$ "
 
 PROMPT_COMMAND='reset_terminal_title'
