@@ -11,21 +11,3 @@ if [ -d "$HOME/.local/bin" ] && [ -z `echo "$PATH" | grep "$HOME/.local/bin"` ];
 fi
 EOF
 fi
-
-if [[ -f ~/.bashrc ]] && [[ -z `cat ~/.bashrc | grep 'alias subl'` ]]; then
-cat >> ~/.bashrc <<'EOF'
-
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    alias subl='rmate'
-fi
-EOF
-fi
-
-if [[ -f ~/.zshrc ]] && [[ -z `cat ~/.zshrc | grep 'alias subl'` ]]; then
-cat >> ~/.zshrc <<'EOF'
-
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    alias subl='rmate'
-fi
-EOF
-fi
