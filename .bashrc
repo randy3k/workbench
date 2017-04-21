@@ -104,3 +104,5 @@ function reset_terminal_title {
 function iterm2_print_user_vars {
     printf "\033]1337;CurrentDir=''\007"
 }
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

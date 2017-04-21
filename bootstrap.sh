@@ -71,6 +71,9 @@ case "$1" in
     subl)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
     ;;
+    iterm)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/iterm.sh | bash
+    ;;
     ruby)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby.sh | bash
     ;;
@@ -102,7 +105,7 @@ case "$1" in
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
     ;;
     *)
-        echo "Usage: bootstrap [reload|subl|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
+        echo "Usage: bootstrap [reload|subl|iterm|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
     ;;
 esac
 source ~/.bash_profile
