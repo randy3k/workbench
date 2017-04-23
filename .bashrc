@@ -29,7 +29,7 @@ PS1="\[\033[33m\](\h)\[\033[00m\]-\W\\$ "
 PS1='\[\e]0;\u@\h\a\]'"$PS1"
 
 # color
-LS_COLORS='di=34:fi=0:ln=35:pi=36;1:so=33;1:bd=0:cd=0:or=35;4:mi=0:ex=31:su=0;7;31:*.rpm=90'
+LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43:*.rpm=90'
 
 # aliases
 PS_COMMAND="ps ax -o user,pid,pcpu,pmem,nice,stat,cputime,etime,command"
@@ -98,14 +98,14 @@ PROMPT_COMMAND='reset_terminal_title'
 function reset_terminal_title {
     printf "\033]0;%s\007" "${HOSTNAME%%.*}"
     printf '\033]7;\007'
-    printf "\033]1337;CurrentDir=''\007"
+    # printf "\033]1337;CurrentDir=''\007"
 }
 
-if [[ -f ~/.iterm2_shell_integration.bash ]]; then
-    function iterm2_print_user_vars {
-        printf "\033]1337;CurrentDir=''\007"
-    }
-fi
+# if [[ -f ~/.iterm2_shell_integration.bash ]]; then
+#     function iterm2_print_user_vars {
+#         printf "\033]1337;CurrentDir=''\007"
+#     }
+# fi
 
 if ([[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]) && [[ -n `command -v rmate` ]]; then
     alias subl=$(command -v rmate)
