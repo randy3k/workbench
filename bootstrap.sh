@@ -68,8 +68,8 @@ cat > ~/.local/bin/bootstrap <<'EOF'
 #!/usr/bin/env bash
 
 case "$1" in
-    subl)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/subl.sh | bash
+    rmate)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rmate.sh | bash
     ;;
     iterm)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/iterm.sh | bash
@@ -105,7 +105,7 @@ case "$1" in
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
     ;;
     *)
-        echo "Usage: bootstrap [reload|subl|iterm|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
+        echo "Usage: bootstrap [reload|rmate|iterm|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
     ;;
 esac
 source ~/.bash_profile
