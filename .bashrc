@@ -95,14 +95,7 @@ PROMPT_COMMAND='reset_terminal_title'
 function reset_terminal_title {
     printf "\033]0;%s\007" "${HOSTNAME%%.*}"
     printf '\033]7;\007'
-    # printf "\033]1337;CurrentDir=''\007"
 }
-
-# if [[ -f ~/.iterm2_shell_integration.bash ]]; then
-#     function iterm2_print_user_vars {
-#         printf "\033]1337;CurrentDir=''\007"
-#     }
-# fi
 
 if ([[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]) && [[ -n `command -v rmate` ]]; then
     alias subl=$(command -v rmate)
