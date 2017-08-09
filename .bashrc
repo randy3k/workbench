@@ -90,12 +90,14 @@ function gitify {
 
 PS1="\[\033[33m\](\h)\[\033[00m\]-\W\[\$(gitcolor)\]\$(gitify)\[\033[00m\]\$ "
 
-PROMPT_COMMAND='reset_terminal_title'
+if [[ "$TERM" = "xterm-256color" ]]; then
+    PROMPT_COMMAND='reset_terminal_title'
 
-function reset_terminal_title {
-    printf "\033]0;%s\007" "${HOSTNAME%%.*}"
-    printf '\033]7;\007'
-}
+    function reset_terminal_title {
+        printf "\033]0;%s\007" "${HOSTNAME%%.*}"
+        printf '\033]7;\007'
+    }
+fi
 
 if ([[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]) && [[ -n `command -v rmate` ]]; then
     alias subl=$(command -v rmate)
