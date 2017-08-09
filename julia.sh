@@ -7,7 +7,7 @@ if [[ "$1" = "dev" ]]; then
     URL="https://status.julialang.org/download/linux-x86_64"
     JULIA="julia-dev"
 else
-    URL=$(curl -s "http://julialang.org/downloads/" | sed -n 's/.*href="\([^"]*x86_64\.tar\.gz\)".*/\1/p')
+    URL=$(curl -s "https://julialang.org/downloads/" | sed -n 's/.*href="\([^"]*x86_64\.tar\.gz\)".*/\1/p')
     JULIA="julia"
 fi
 echo Downloading from $URL
