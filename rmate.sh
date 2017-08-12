@@ -7,6 +7,7 @@ if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.local/bin'` ]]; t
 cat >> ~/.profile <<'EOF'
 
 if [ -d "$HOME/.local/bin" ] && [ -z `echo "$PATH" | grep "$HOME/.local/bin"` ]; then
+    export RMATE_PORT=52658
     export PATH="$HOME/.local/bin:$PATH"
 fi
 EOF
