@@ -3,7 +3,7 @@
 # exit on error
 set -e
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
 
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.linuxbrew'` ]]; then
