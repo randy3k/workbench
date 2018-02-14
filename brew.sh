@@ -5,16 +5,22 @@ set -e
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
+if [[ -d /home/linuxbrew ]]; then
+    BREWDIR="/home/linuxbrew/.linuxbrew"
+else
+    BREWDIR="$HOME/.linuxbrew"
+fi
+
 
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep '$HOME/.linuxbrew'` ]]; then
 cat >> ~/.profile <<'EOF'
 
 # linuxbrew
-if [ -d "$HOME/.linuxbrew" ] && [ -z `echo "$PATH" | grep "$HOME/.linuxbrew"` ]; then
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-    export PATH="$HOME/.linuxbrew/sbin:$PATH"
-    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+if [ -d "$BREWDIR" ] && [ -z `echo "$PATH" | grep "$BREWDIR"` ]; then
+    export PATH="$BREWDIR/bin:$PATH"
+    export PATH="$BREWDIR/sbin:$PATH"
+    export MANPATH="$BREWDIR/share/man:$MANPATH"
+    export INFOPATH="$BREWDIR/share/info:$INFOPATH"
 fi
 EOF
 fi
