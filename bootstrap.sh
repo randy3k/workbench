@@ -38,6 +38,10 @@ if [ "$(hostname)" == "gauss" ]; then
     curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/gauss.bashrc >> ~/.local/etc/.bashrc
 fi
 
+if [ "$(hostname)" == "gromit" ]; then
+    curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/gromit.bashrc >> ~/.local/etc/.bashrc
+fi
+
 # .profile
 if [[ ! -f ~/.profile ]]; then
     touch ~/.profile
