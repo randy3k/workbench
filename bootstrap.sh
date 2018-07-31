@@ -75,6 +75,9 @@ case "$1" in
     rmate)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rmate.sh | bash
     ;;
+    rmate-docker)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rmate-docker.sh | bash
+    ;;
     iterm)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/iterm.sh | bash
     ;;
@@ -109,7 +112,7 @@ case "$1" in
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
     ;;
     *)
-        echo "Usage: bootstrap [reload|rmate|iterm|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
+        echo "Usage: bootstrap [reload|rmate(-docker)|iterm|ruby|brew|conda|julia|julia-dev|nvimrc|dropbox|sshkey]"
     ;;
 esac
 source ~/.bash_profile
