@@ -79,6 +79,9 @@ case "$1" in
         shift
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/$PROG.sh | bash /dev/stdin "$@"
     ;;
+    list)
+        echo "$(curl -s https://api.github.com/repos/randy3k/server-bootstrap/git/trees/master | sed -n -e 's|.*"path": "\(.*\).sh".*$|\1|p')"
+    ;;
     sshkey)
         mkdir -p ~/.ssh
         chmod 700 ~/.ssh
@@ -92,7 +95,7 @@ case "$1" in
         echo "Usage: bootstrap
     - reload
     - install 
-        rmate(-docker)|brew|conda|julia(-dev)|nvimrc|dropbox|r|sublime_text
+    - list
     - sshkey"
     ;;
 esac
