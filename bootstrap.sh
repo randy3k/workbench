@@ -25,8 +25,6 @@ fi
 mkdir -p ~/.local/etc
 curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.bashrc -o ~/.local/etc/.bashrc
 
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.aliases -o ~/.local/etc/.aliases
-
 
 if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
@@ -45,6 +43,11 @@ if [ "$(hostname)" == "gromit" ]; then
     curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/gromit.bashrc >> ~/.local/etc/.bashrc
 fi
 
+
+# .aliases
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.aliases -o ~/.local/etc/.aliases
+
+
 # .profile
 if [[ ! -f ~/.profile ]]; then
     touch ~/.profile
@@ -56,6 +59,13 @@ cat >> ~/.profile <<'EOF'
 if [ -d "$HOME/.local/bin" ] && [ -z `echo "$PATH" | grep "$HOME/.local/bin"` ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
+EOF
+fi
+
+if [[ -z `cat ~/.profile | grep '~/.local/etc/.aliases'` ]]; then
+cat >> ~/.profile <<'EOF'
+
+[ -f ~/.local/etc/.aliases ] && source ~/.local/etc/.aliases
 EOF
 fi
 
@@ -97,7 +107,7 @@ case "$1" in
     *)
         echo "Usage: bootstrap
     - reload
-    - install 
+    - install
     - list
     - sshkey"
     ;;
