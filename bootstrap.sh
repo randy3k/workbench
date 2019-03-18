@@ -120,8 +120,7 @@ case "$1" in
         - rmate(-docker)
         - brew
         - conda
-        - julia
-        - julia-dev
+        - julia(-dev)
         - nvimrc
         - dropbox
         - sublime_text
