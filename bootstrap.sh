@@ -78,12 +78,6 @@ case "$1" in
     rmate-docker)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rmate-docker.sh | bash
     ;;
-    iterm)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/iterm.sh | bash
-    ;;
-    ruby)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/ruby.sh | bash
-    ;;
     brew)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/brew.sh | bash
     ;;
@@ -101,6 +95,15 @@ case "$1" in
     ;;
     dropbox)
         curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/dropbox.sh | bash
+    ;;
+    sublime_text)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/sublime_text.sh | bash
+    ;;
+    enpass)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/enpass.sh | bash
+    ;;
+    r)
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/r.sh | bash
     ;;
     sshkey)
         mkdir -p ~/.ssh
