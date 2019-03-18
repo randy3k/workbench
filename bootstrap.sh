@@ -116,15 +116,18 @@ case "$1" in
     ;;
     *)
         echo "Usage: bootstrap
-    - reload
-    - rmate(-docker)
-    - brew
-    - conda
-    - julia
-    - julia-dev
-    - nvimrc
-    - dropbox
-    - sshkey"
+        - reload
+        - rmate(-docker)
+        - brew
+        - conda
+        - julia
+        - julia-dev
+        - nvimrc
+        - dropbox
+        - sublime_text
+        - enpass
+        - r
+        - sshkey"
     ;;
 esac
 source ~/.bash_profile
