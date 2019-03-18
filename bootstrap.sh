@@ -72,38 +72,12 @@ cat > ~/.local/bin/bootstrap <<'EOF'
 #!/usr/bin/env bash
 
 case "$1" in
-    rmate)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rmate.sh | bash
-    ;;
-    rmate-docker)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/rmate-docker.sh | bash
-    ;;
-    brew)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/brew.sh | bash
-    ;;
-    conda)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/conda.sh | bash
-    ;;
-    julia)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia.sh | bash
-    ;;
-    julia-dev)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/julia.sh | bash /dev/stdin dev
-    ;;
-    nvimrc)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/nvimrc.sh | bash
-    ;;
-    dropbox)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/dropbox.sh | bash
-    ;;
-    sublime_text)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/sublime_text.sh | bash
-    ;;
-    enpass)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/enpass.sh | bash
-    ;;
-    r)
-        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/r.sh | bash
+    install)
+        shift
+        [ -z "$1" ] && echo "missing argument" && exit 1
+        PROG="$1"
+        shift
+        curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/$PROG.sh | bash /dev/stdin "$@"
     ;;
     sshkey)
         mkdir -p ~/.ssh
@@ -116,17 +90,10 @@ case "$1" in
     ;;
     *)
         echo "Usage: bootstrap
-        - reload
-        - rmate(-docker)
-        - brew
-        - conda
-        - julia(-dev)
-        - nvimrc
-        - dropbox
-        - sublime_text
-        - enpass
-        - r
-        - sshkey"
+    - reload
+    - install 
+        rmate(-docker)|brew|conda|julia(-dev)|nvimrc|dropbox|r|sublime_text
+    - sshkey"
     ;;
 esac
 source ~/.bash_profile
