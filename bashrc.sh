@@ -9,3 +9,8 @@ curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.bashrc -o ~/.loc
 
 # .aliases
 curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.aliases -o ~/.local/etc/.aliases
+
+
+if [ -n "$BASH_VERSION" ]; then
+    source ~/.bash_profile
+fi

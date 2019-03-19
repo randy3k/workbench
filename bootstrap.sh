@@ -95,10 +95,6 @@ case "$1" in
     - sshkey"
     ;;
 esac
-
-if [ -n "$BASH_VERSION" ]; then
-    source ~/.bash_profile
-fi
 EOF
 chmod +x ~/.local/bin/bootstrap
 
