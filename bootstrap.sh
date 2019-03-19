@@ -21,10 +21,6 @@ fi
 EOF
 fi
 
-# bashrc
-mkdir -p ~/.local/etc
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.bashrc -o ~/.local/etc/.bashrc
-
 
 if [[ -z `cat ~/.bashrc | grep \~/.local/etc/.bashrc` ]]; then
 cat >> ~/.bashrc <<'EOF'
@@ -34,18 +30,6 @@ if [ -f ~/.local/etc/.bashrc ]; then
 fi
 EOF
 fi
-
-if [ "$(hostname)" == "gauss" ]; then
-    curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/gauss.bashrc >> ~/.local/etc/.bashrc
-fi
-
-if [ "$(hostname)" == "gromit" ]; then
-    curl https://raw.githubusercontent.com/randy3k/server-bootstrap/master/gromit.bashrc >> ~/.local/etc/.bashrc
-fi
-
-
-# .aliases
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.aliases -o ~/.local/etc/.aliases
 
 
 # .profile
@@ -69,15 +53,6 @@ cat >> ~/.profile <<'EOF'
 EOF
 fi
 
-# Rprofile
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.Rprofile -o ~/.Rprofile
-
-# .tmux.conf
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.tmux.conf -o ~/.tmux.conf
-
-
-# git config
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.gitconfig -o ~/.gitconfig
 
 # write bootstrap function
 mkdir -p ~/.local/bin
@@ -85,7 +60,7 @@ cat > ~/.local/bin/bootstrap <<'EOF'
 #!/usr/bin/env bash
 
 case "$1" in
-    install)
+    run)
         shift
         [ -z "$1" ] && echo "missing argument" && exit 1
         PROG="$1"
@@ -94,6 +69,13 @@ case "$1" in
     ;;
     list)
         echo "$(curl -s https://api.github.com/repos/randy3k/server-bootstrap/git/trees/master | sed -n -e 's|.*"path": "\(.*\).sh".*$|\1|p')"
+    ;;
+    show)
+        shift
+        [ -z "$1" ] && echo "missing argument" && exit 1
+        PROG="$1"
+        shift
+        echo "$(curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/$PROG.sh)"
     ;;
     sshkey)
         mkdir -p ~/.ssh
@@ -107,12 +89,16 @@ case "$1" in
     *)
         echo "Usage: bootstrap
     - reload
-    - install
+    - run
     - list
+    - show
     - sshkey"
     ;;
 esac
-source ~/.bash_profile
+
+if [ -n "$BASH_VERSION" ]; then
+    source ~/.bash_profile
+fi
 EOF
 chmod +x ~/.local/bin/bootstrap
 
