@@ -46,13 +46,6 @@ fi
 EOF
 fi
 
-if [[ -z `cat ~/.profile | grep '~/.local/etc/.aliases'` ]]; then
-cat >> ~/.profile <<'EOF'
-
-[ -f ~/.local/etc/.aliases ] && source ~/.local/etc/.aliases
-EOF
-fi
-
 
 # write bootstrap function
 mkdir -p ~/.local/bin

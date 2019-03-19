@@ -8,7 +8,7 @@ mkdir -p ~/.local/etc
 curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.bashrc -o ~/.local/etc/.bashrc
 
 # .aliases
-curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.aliases -o ~/.local/etc/.aliases
+curl https://raw.githubusercontent.com/randy3k/dotfiles/master/.aliases -o ~/.aliases
 
 
 if [ -n "$BASH_VERSION" ]; then
