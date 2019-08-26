@@ -31,5 +31,5 @@ symlink ~/.dotfiles/.zshrc ~/.zshrc
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME/.dotfiles/'
 dotfiles config --local status.showUntrackedFiles no
-dotfiles config --local alias.github '!git add -u && git commit -m "Update dotfiles at $(date -u)" && git push'
+dotfiles config --local alias.save '!git add -u && git commit -m "Update dotfiles at $(date -u)" && git push'
 dotfiles config --local pull.rebase true
