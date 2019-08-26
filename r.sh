@@ -4,5 +4,5 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E19F5F87128899B192B1A2C
 
 echo "deb http://cran.rstudio.com/bin/linux/debian stretch-cran35/" | tee /etc/apt/sources.list.d/r-project.list
 
-apt upgrade
-apt install r-base
+apt-get upgrade
+apt-get install r-base
