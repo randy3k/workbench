@@ -1,7 +1,4 @@
 ```
-# install bootstrap
-curl -s https://raw.githubusercontent.com/randy3k/server-bootstrap/master/bootstrap.sh | bash
-
-# bootstrap
-bootstrap
+# install
+curl -s https://raw.githubusercontent.com/randy3k/unix-bootstrap/master/install.sh | bash
 ```

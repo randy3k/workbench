@@ -1,4 +1,4 @@
-# for gauss
+# for gromit
 
 function pbs_badge {
     if [[ -n "$PBS_NP" ]]
