@@ -4,13 +4,13 @@ set -e
 
 # install bootstrap files
 DIR=`mktemp -d`
-curl -L -o "$DIR/unix-bootstrap.zip" https://github.com/randy3k/unix-bootstrap/archive/master.zip
+curl -L -o "$DIR/bootstrap.zip" https://github.com/randy3k/unix-bootstrap/archive/master.zip
 
 mkdir -p $HOME/.local/
-unzip -o $DIR/unix-bootstrap.zip -d $HOME/.local/
+unzip -o $DIR/bootstrap.zip -d $HOME/.local/
 
-rm -rf $HOME/.local/unix-bootstrap
-mv $HOME/.local/unix-bootstrap-master $HOME/.local/unix-bootstrap
+rm -rf $HOME/.local/bootstrap
+mv $HOME/.local/unix-bootstrap-master $HOME/.local/bootstrap
 
 rm -r "$DIR"
 
