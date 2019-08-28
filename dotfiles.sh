@@ -4,6 +4,8 @@ set -e
 shopt -s expand_aliases
 
 git init --bare $HOME/.dotfiles
+touch ~/.dotfiles/info/sparse-checkout
+
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
 dotfiles config --local core.sparseCheckout true
@@ -12,5 +14,4 @@ dotfiles config --local pull.rebase true
 
 dotfiles remote add -f origin git@github.com:randy3k/dotfiles.git
 dotfiles branch -u origin/master
-touch ~/.dotfiles/info/sparse-checkout
 dotfiles pull
