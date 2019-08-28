@@ -13,5 +13,5 @@ dotfiles config --local alias.save '!git add $(git diff-files --diff-filter=M --
 dotfiles config --local pull.rebase true
 
 dotfiles remote add -f origin git@github.com:randy3k/dotfiles.git
+dotfiles checkout master
 dotfiles branch -u origin/master
-dotfiles pull
