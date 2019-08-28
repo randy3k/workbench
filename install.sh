@@ -7,7 +7,7 @@ DIR=`mktemp -d`
 curl -L -o "$DIR/bootstrap.zip" https://github.com/randy3k/unix-bootstrap/archive/master.zip
 
 mkdir -p $HOME/.local/
-unzip -o $DIR/bootstrap.zip -d $HOME/.local/
+unzip -q -o $DIR/bootstrap.zip -d $HOME/.local/
 
 rm -rf $HOME/.local/bootstrap
 mv $HOME/.local/unix-bootstrap-master $HOME/.local/bootstrap
