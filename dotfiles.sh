@@ -8,7 +8,7 @@ git init --bare $HOME/.dotfiles
 alias dgit='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 dgit config --local status.showUntrackedFiles no
 dgit config --local core.sparseCheckout true
-dgit config --local alias.save '!git add -u && git commit -m \"Update dotfiles at $(date -u)\" && git push'
+dgit config --local alias.shove '!git add -u && git commit -m \"Update dotfiles at $(date -u)\" && git push'
 dgit config --local pull.rebase true
 
 dgit remote add -f origin git@github.com:randy3k/dotfiles.git
