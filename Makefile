@@ -1,4 +1,4 @@
 all:
 	git add -A \
-	&& git commit -m "Update server-bootstrap at $$(date)" \
+	&& git commit -m "Update unix-bootstrap at $$(date)" \
 	&& git push
