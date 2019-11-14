@@ -24,7 +24,7 @@ if [[ -z `cat ~/.bash_profile | grep \~/.profile` ]]; then
 cat >> ~/.bash_profile <<'EOF'
 
 if [[ -f ~/.profile ]]; then
-
+    source ~/.profile
 fi
 
 if [[ -f ~/.bashrc ]]; then
