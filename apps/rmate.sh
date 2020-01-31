@@ -15,6 +15,9 @@ fi
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep 'RMATE_PORT'` ]]; then
 cat >> ~/.profile <<'EOF'
 
-export RMATE_PORT=52658
+if ([[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]) && [[ -n `command -v rmate` ]]; then
+    alias subl=$(command -v rmate)
+    export RMATE_PORT=52658
+fi
 EOF
 fi
