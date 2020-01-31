@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p .local/bin
+mkdir -p $HOME/.local/bin
 curl https://raw.githubusercontent.com/aurora/rmate/master/rmate -o $HOME/.local/bin/rmate
 chmod +x $HOME/.local/bin/rmate
 
