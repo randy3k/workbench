@@ -1,10 +1,10 @@
 #!/bin/bash
 
-REPO="bootstrap"
+REPO="unix-bootstrap"
 
 download_bootstrap() {
     DIR=`mktemp -d`
-    curl -L -o "$DIR/bootstrap.zip" https://github.com/randy3k/$REPO/archive/master.zip
+    curl -sL -o "$DIR/bootstrap.zip" https://github.com/randy3k/$REPO/archive/master.zip
 
     mkdir -p $HOME/.local/
     unzip -q -o $DIR/bootstrap.zip -d $HOME/.local/
@@ -16,7 +16,8 @@ download_bootstrap() {
 }
 
 clone_bootstrap() {
-    git clone --no-checkout git@github.com:randy3k/$REPO.git $HOME/.local/bootstrap.tmp
+    git clone -q --no-checkout git@github.com:randy3k/$REPO.git $HOME/.local/bootstrap.tmp
+    mkdir -p $HOME/.local/bootstrap
     mv $HOME/.local/bootstrap.tmp/.git $HOME/.local/bootstrap/
 
     rm -rf $HOME/.local/bootstrap.tmp
@@ -25,12 +26,11 @@ clone_bootstrap() {
 }
 
 initialize_profile() {
-    curl -s https://raw.githubusercontent.com/randy3k/$REPO/master/profile_init.sh | bash
+    bash ~/.local/bootstrap/profile_init.sh
 }
 
 
-
-PS3='Please choose a method: '
+echo='Please choose a method: '
 options=("download zip" "git clone" )
 select opt in "${options[@]}"
 do
@@ -54,4 +54,5 @@ echo "Initializing profile"
 initialize_profile
 
 echo "Symlink bootstrap"
+mkdir -p ~/.local/bin/
 ln -s ~/.local/bootstrap/bootstrap ~/.local/bin/bootstrap
