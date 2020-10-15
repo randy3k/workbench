@@ -1,0 +1,30 @@
+#!/bin/bash
+
+run_script() {
+
+}
+
+update_bootstrap() {
+
+}
+
+PS3='Please choose an action: '
+options=("run" "update" )
+
+select opt in "${options[@]}"
+do
+    case $opt in
+        "run")
+            run_script
+            break
+            ;;
+        "update")
+            update_bootstrap
+            break
+            ;;
+        "quit")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
