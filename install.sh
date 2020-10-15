@@ -1,32 +1,33 @@
 #!/bin/bash
 
-REPO="unix-bootstrap"
+REPO="workbench"
 
-download_bootstrap() {
+download_zip() {
     DIR=`mktemp -d`
-    curl -sL -o "$DIR/bootstrap.zip" https://github.com/randy3k/$REPO/archive/master.zip
+    curl -sL -o "$DIR/$REPO.zip" https://github.com/randy3k/$REPO/archive/master.zip
 
     mkdir -p $HOME/.local/
-    unzip -q -o $DIR/bootstrap.zip -d $HOME/.local/
+    unzip -q -o $DIR/$REPO.zip -d $HOME/.local/
 
-    rm -rf $HOME/.local/bootstrap
-    mv $HOME/.local/$REPO-master $HOME/.local/bootstrap
+    # remove any previous directory
+    rm -rf $HOME/.local/$REPO
+
+    mv $HOME/.local/$REPO-master $HOME/.local/$REPO
 
     rm -r "$DIR"
 }
 
-clone_bootstrap() {
-    git clone -q --no-checkout git@github.com:randy3k/$REPO.git $HOME/.local/bootstrap.tmp
-    mkdir -p $HOME/.local/bootstrap
-    mv $HOME/.local/bootstrap.tmp/.git $HOME/.local/bootstrap/
+git_clone() {
+    mkdir -p $HOME/.local/
 
-    rm -rf $HOME/.local/bootstrap.tmp
-    cd $HOME/.local/bootstrap
-    git reset
+    # remove any previous directory
+    rm -rf $HOME/.local/$REPO
+
+    git clone -q --no-checkout git@github.com:randy3k/$REPO.git $HOME/.local/$REPO
 }
 
 initialize_profile() {
-    bash ~/.local/bootstrap/profile_init.sh
+    bash ~/.local/$REPO/profile_init.sh
 }
 
 
@@ -36,11 +37,11 @@ select opt in "${options[@]}"
 do
     case $opt in
         "download zip")
-            download_bootstrap
+            download_zip
             break
             ;;
         "git clone")
-            clone_bootstrap
+            git_clone
             break
             ;;
         "quit")
@@ -53,6 +54,6 @@ done
 echo "Initializing profile"
 initialize_profile
 
-echo "Symlink bootstrap"
+echo "Symlink script"
 mkdir -p ~/.local/bin/
-ln -s ~/.local/bootstrap/bootstrap ~/.local/bin/bootstrap
+ln -s ~/.local/$REPO/$REPO ~/.local/bin/$REPO
