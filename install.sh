@@ -1,18 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-REPO="workbench"
+NAME="workbench"
 
 download_zip() {
     DIR=`mktemp -d`
-    curl -sL -o "$DIR/$REPO.zip" https://github.com/randy3k/$REPO/archive/master.zip
+    curl -sL -o "$DIR/$NAME.zip" https://github.com/randy3k/$NAME/archive/master.zip
 
     mkdir -p $HOME/.local/
-    unzip -q -o $DIR/$REPO.zip -d $HOME/.local/
+    unzip -q -o $DIR/$NAME.zip -d $HOME/.local/
 
     # remove any previous directory
-    rm -rf $HOME/.local/$REPO
+    rm -rf $HOME/.local/$NAME
 
-    mv $HOME/.local/$REPO-master $HOME/.local/$REPO
+    mv $HOME/.local/$NAME-master $HOME/.local/$NAME
 
     rm -r "$DIR"
 }
@@ -21,13 +21,13 @@ git_clone() {
     mkdir -p $HOME/.local/
 
     # remove any previous directory
-    rm -rf $HOME/.local/$REPO
+    rm -rf $HOME/.local/$NAME
 
-    git clone -q --no-checkout git@github.com:randy3k/$REPO.git $HOME/.local/$REPO
+    git clone -q git@github.com:randy3k/$NAME.git $HOME/.local/$NAME
 }
 
 initialize_profile() {
-    bash ~/.local/$REPO/profile_init.sh
+    bash ~/.local/$NAME/profile_init.sh
 }
 
 
@@ -51,9 +51,11 @@ do
     esac
 done
 
-echo "Initializing profile"
+echo "Downloaded workbench."
+
+echo "Initializing profile."
 initialize_profile
 
-echo "Symlink script"
+echo "Installing workbench"
 mkdir -p ~/.local/bin/
-ln -s ~/.local/$REPO/$REPO ~/.local/bin/$REPO
+ln -sf ~/.local/$NAME/$NAME ~/.local/bin/$NAME

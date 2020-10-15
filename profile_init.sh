@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # bash_profile
 if [[ ! -f ~/.bash_profile ]]; then
@@ -7,7 +7,6 @@ fi
 
 if [[ -z `cat ~/.bash_profile | grep '## begin workbench'` ]]; then
 cat >> ~/.bash_profile <<'EOF'
-
 ## begin workbench
 ## do not edit by hand
 
@@ -32,11 +31,10 @@ fi
 
 if [[ -z `cat ~/.profile | grep '## begin workbench'` ]]; then
 cat >> ~/.profile <<'EOF'
-
 ## begin workbench
 ## do not edit by hand
 
-if [ -d "$HOME/.local/bin" ] && [ -z `echo "$PATH" | grep "$HOME/.local/bin"` ]; then
+if [[ -d "$HOME/.local/bin" ]] && [[ -z $(echo "$PATH" | grep "$HOME/.local/bin") ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
