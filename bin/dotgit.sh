@@ -12,7 +12,7 @@ dotgit config --local pull.rebase true
 
 dotgit remote add -f origin git@github.com:randy3k/dotfiles.git
 
-ln -sf ~/.local/workbench/run/sparse-checkout ~/.dotfiles/info/sparse-checkout
+ln -sf ~/.local/workbench/etc/sparse-checkout ~/.dotfiles/info/sparse-checkout
 
 dotgit checkout master
 dotgit branch -u origin/master

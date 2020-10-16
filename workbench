@@ -16,10 +16,10 @@ case "$1" in
         [ -z "$1" ] && echo "missing argument" && exit 1
         FILE="$1"
         shift
-        bash ~/.local/$NAME/run/$FILE.sh
+        bash ~/.local/workbench/bin/$FILE.sh
     ;;
     list)
-        cd ~/.local/$NAME/run
+        cd ~/.local/workbench/bin
         ls -C1 *.sh | sed 's/\(.*\).sh/\1/'
     ;;
     reinstall)
@@ -29,6 +29,6 @@ case "$1" in
         uninstall_workbench
     ;;
     *)
-        echo "Usage: workbench [list|run|sshkey|reinstall|uninstall]"
+        echo "Usage: workbench [list|run|reinstall|uninstall]"
     ;;
 esac
