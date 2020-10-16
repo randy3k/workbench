@@ -1,0 +1,10 @@
+/.Rprofile
+/.aliases
+/.bashrc.d/
+/.gitconfig
+/.gitignore
+/.lintr
+/.screenrc
+/.tmux.conf
+/.zprofile
+/.zshrc
