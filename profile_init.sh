@@ -7,6 +7,7 @@ fi
 
 if [[ -z $(cat ~/.bash_profile | grep 'source ~/.profile') ]]; then
 cat >> ~/.bash_profile <<'EOF'
+
 if [[ -f ~/.profile ]]; then
     source ~/.profile
 fi
@@ -26,6 +27,7 @@ fi
 
 if [[ -z $(cat ~/.bashrc | grep '~/.bashrc.d/init.bashrc') ]]; then
 cat >> ~/.bashrc <<'EOF'
+
 [[ -f ~/.bashrc.d/init.bashrc ]] && . ~/.bashrc.d/init.bashrc
 
 EOF
@@ -38,6 +40,7 @@ fi
 
 if [[ -z $(cat ~/.profile | grep '$HOME/.local/bin') ]]; then
 cat >> ~/.profile <<'EOF'
+
 if [[ -d "$HOME/.local/bin" ]] && [[ -z $(echo "$PATH" | grep "$HOME/.local/bin") ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
