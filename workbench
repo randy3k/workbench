@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-NAME="workbench"
-
 reinstall_workbench() {
-    bash <(curl -s https://raw.githubusercontent.com/randy3k/$NAME/master/install.sh)
+    bash <(curl -s https://raw.githubusercontent.com/randy3k/workbench/master/install.sh)
 }
 
 uninstall_workbench() {
-    rm -rf ~/.local/$NAME
-    rm ~/.local/bin/$NAME
+    rm -rf ~/.local/workbench
+    rm ~/.local/bin/workbench
 }
 
 

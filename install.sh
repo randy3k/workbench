@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 
-NAME="workbench"
-
 download_zip() {
     DIR=`mktemp -d`
-    curl -sL -o "$DIR/$NAME.zip" https://github.com/randy3k/$NAME/archive/master.zip
+    curl -sL -o "$DIR/workbench.zip" https://github.com/randy3k/workbench/archive/master.zip
 
     mkdir -p $HOME/.local/
-    unzip -q -o $DIR/$NAME.zip -d $HOME/.local/
+    unzip -q -o $DIR/workbench.zip -d $HOME/.local/
 
     # remove any previous directory
-    rm -rf $HOME/.local/$NAME
+    rm -rf $HOME/.local/workbench
 
-    mv $HOME/.local/$NAME-master $HOME/.local/$NAME
+    mv $HOME/.local/workbench-master $HOME/.local/workbench
 
     rm -r "$DIR"
 }
@@ -21,13 +19,13 @@ git_clone() {
     mkdir -p $HOME/.local/
 
     # remove any previous directory
-    rm -rf $HOME/.local/$NAME
+    rm -rf $HOME/.local/workbench
 
-    git clone -q git@github.com:randy3k/$NAME.git $HOME/.local/$NAME
+    git clone -q git@github.com:randy3k/workbench.git $HOME/.local/workbench
 }
 
 initialize_profile() {
-    bash ~/.local/$NAME/profile_init.sh
+    bash ~/.local/workbench/profile_init.sh
 }
 
 
@@ -58,4 +56,4 @@ initialize_profile
 
 echo "Installing workbench"
 mkdir -p ~/.local/bin/
-ln -sf ~/.local/$NAME/$NAME ~/.local/bin/$NAME
+ln -sf ~/.local/workbench/workbench ~/.local/bin/workbench
