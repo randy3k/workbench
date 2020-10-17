@@ -10,7 +10,12 @@ dotgit config --local status.showUntrackedFiles no
 dotgit config --local core.sparseCheckout true
 dotgit config --local pull.rebase true
 
-dotgit remote add -f origin git@github.com:randy3k/dotfiles.git
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+    # has ssh agent forwarded
+    dotgit remote add -f origin git@github.com:randy3k/dotfiles.git
+else
+    dotgit remote add -f origin https://github.com/randy3k/dotfiles.git
+fi
 
 ln -sf ~/.local/workbench/etc/sparse-checkout ~/.dotfiles/info/sparse-checkout
 
