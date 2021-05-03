@@ -10,7 +10,6 @@ cat >> ~/.profile <<'EOF'
 if [ -d "$HOME/.local/bin" ] && [ -z `echo "$PATH" | grep "$HOME/.local/bin"` ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
-
 EOF
 fi
 
