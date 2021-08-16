@@ -10,7 +10,7 @@ dot config --local status.showUntrackedFiles no
 dot config --local core.sparseCheckout true
 dot config --local pull.rebase true
 
-if [[ -z "$SSH_AUTH_SOCK" ]]; then
+if [[ -n "$SSH_AUTH_SOCK" ]]; then
     # has ssh agent forwarded
     dot remote add -f origin git@github.com:randy3k/dotfiles.git
 else
