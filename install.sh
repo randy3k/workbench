@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 download_zip() {
     DIR=`mktemp -d`
     curl -sL -o "$DIR/workbench.zip" https://github.com/randy3k/workbench/archive/master.zip
