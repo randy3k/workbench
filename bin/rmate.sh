@@ -13,7 +13,7 @@ fi
 EOF
 fi
 
-if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep 'RMATE_PORT'` ]]; then
+if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep 'command -v rmate'` ]]; then
 cat >> ~/.profile <<'EOF'
 
 if ([[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]) && [[ -n `command -v rmate` ]]; then

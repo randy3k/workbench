@@ -13,7 +13,7 @@ fi
 EOF
 fi
 
-if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep 'RMATE_HOST'` ]]; then
+if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep 'command -v rmate'` ]]; then
 cat >> ~/.profile <<'EOF'
 
 alias subl="$(command -v rmate) -H host.docker.internal"
