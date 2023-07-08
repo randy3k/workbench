@@ -16,10 +16,10 @@ case "$1" in
         [ -z "$1" ] && echo "missing argument" && exit 1
         FILE="$1"
         shift
-        bash ~/.local/workbench/bin/$FILE.sh
+        bash ~/.local/workbench/script/$FILE.sh
     ;;
     list)
-        cd ~/.local/workbench/bin
+        cd ~/.local/workbench/script
         ls -C1 *.sh | sed 's/\(.*\).sh/\1/'
     ;;
     cat)
@@ -27,7 +27,7 @@ case "$1" in
         [ -z "$1" ] && echo "missing argument" && exit 1
         FILE="$1"
         shift
-        cat ~/.local/workbench/bin/$FILE.sh
+        cat ~/.local/workbench/script/$FILE.sh
     ;;
     reinstall)
         reinstall_workbench
