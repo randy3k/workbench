@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p .local/bin
+mkdir -p $HOME/.local/bin
 curl https://raw.githubusercontent.com/aurora/rmate/master/rmate -o $HOME/.local/bin/rmate
 chmod +x $HOME/.local/bin/rmate
 
@@ -16,7 +16,6 @@ fi
 if [[ -f ~/.profile ]] && [[ -z `cat ~/.profile | grep 'RMATE_HOST'` ]]; then
 cat >> ~/.profile <<'EOF'
 
-alias subl=$(command -v rmate)
-export RMATE_HOST=host.docker.internal
+alias subl="$(command -v rmate) -H host.docker.internal"
 EOF
 fi
