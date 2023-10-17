@@ -19,3 +19,6 @@ dot config --local pull.rebase true
 ln -sf ~/.local/workbench/etc/sparse-checkout ~/.dotfiles/info/sparse-checkout
 
 dot checkout master
+
+# hide locally modified files such as .bashrc
+dot update-index --assume-unchanged $(dot status --porcelain | cut -c 1-3 --complement)
