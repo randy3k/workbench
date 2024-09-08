@@ -4,5 +4,15 @@ set -e
 
 DIR=$(mktemp -d)
 
-curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output $DIR/vscode_cli.tar.gz
+ARCH=$(uname -m)
+if [[ "$ARCH" = "arm" ]]; then
+    URL='https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-arm64'
+elif [[ "$ARCH" = "arm" ]]; then
+    URL='https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-arm32'
+else
+    URL='https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64'
+end
+
+curl -Lk $URL --output $DIR/vscode_cli.tar.gz
 tar -xf $DIR/vscode_cli.tar.gz -C ~/.local/bin/
+
