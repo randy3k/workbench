@@ -7,7 +7,7 @@ if [[ ! -f ~/.bash_profile ]]; then
     touch ~/.bash_profile
 fi
 
-if ! grep -Fxq 'source ~/.profile' ~/.bash_profile; then
+if ! grep -Fq 'source ~/.profile' ~/.bash_profile; then
 cat >> ~/.bash_profile <<'EOF'
 
 if [[ -f ~/.profile ]]; then
@@ -27,7 +27,7 @@ if [[ ! -f ~/.bashrc ]]; then
     touch ~/.bashrc
 fi
 
-if ! grep -Fxq '~/.bashrc.d/init.bashrc' ~/.bashrc; then
+if ! grep -Fq '~/.bashrc.d/init.bashrc' ~/.bashrc; then
 cat >> ~/.bashrc <<'EOF'
 
 if [[ -f ~/.bashrc.d/init.bashrc ]]; then
@@ -42,10 +42,10 @@ if [[ ! -f ~/.profile ]]; then
     touch ~/.profile
 fi
 
-if ! grep -Fxq '$HOME/.local/bin' ~/.profile; then
+if ! grep -Fq '$HOME/.local/bin' ~/.profile; then
 cat >> ~/.profile <<'EOF'
 
-if [[ -d "$HOME/.local/bin" ]] && [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
+if [[ -d "$HOME/.local/bin" ]] && [[ ! "$PATH" =~ "$HOME/.local/bin" ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
