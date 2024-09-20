@@ -2,8 +2,8 @@
 
 set -e
 
-if ! grep -Fxq "pwr_led_trigger=default-on" /boot/config.txt; then
-    cat <<'EOF' | sudo tee -a /boot/config.txt > /dev/null
+if ! grep -Fq "pwr_led_trigger=default-on" /boot/firmware/config.txt; then
+    cat <<'EOF' | sudo tee -a /boot/firmware/config.txt > /dev/null
 dtparam=pwr_led_trigger=default-on
 dtparam=pwr_led_activelow=off
 
