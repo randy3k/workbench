@@ -21,8 +21,8 @@ case "$1" in
     list)
         cd ~/.local/workbench/script
         SCRIPTS=$(find . -type f | sed 's;\./\(.*\)\.sh;\1;')
-        echo "$SCRIPTS" | grep --color=never '/'
-        echo "$SCRIPTS" | grep -v --color=never '/'
+        echo "$SCRIPTS" | grep --color=never '/' | sort
+        echo "$SCRIPTS" | grep -v --color=never '/' | sort
     ;;
     cat)
         shift
