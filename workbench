@@ -14,20 +14,22 @@ case "$1" in
     run)
         shift
         [ -z "$1" ] && echo "missing argument" && exit 1
-        FILE="$1"
+        SCRIPT="$1"
         shift
-        bash ~/.local/workbench/script/$FILE.sh
+        bash ~/.local/workbench/script/$SCRIPT.sh
     ;;
     list)
         cd ~/.local/workbench/script
-        ls -C1 *.sh | sed 's/\(.*\).sh/\1/'
+        SCRIPTS=$(find . -type f | sed 's;\./\(.*\)\.sh;\1;')
+        echo "$SCRIPTS" | grep --color=never '/'
+        echo "$SCRIPTS" | grep -v --color=never '/'
     ;;
     cat)
         shift
         [ -z "$1" ] && echo "missing argument" && exit 1
-        FILE="$1"
+        SCRIPT="$1"
         shift
-        cat ~/.local/workbench/script/$FILE.sh
+        cat ~/.local/workbench/script/$SCRIPT.sh
     ;;
     reinstall)
         reinstall_workbench
