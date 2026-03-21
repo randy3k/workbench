@@ -2,6 +2,20 @@
 
 set -e
 
+install_dependencies() {
+    read -p "Install dependencies (git, zip, vim, curl)? [y/N] " -r choice
+    if [[ "$choice" =~ ^[yY]$ ]]; then
+        if command -v apt-get >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y git zip vim curl
+        else
+            echo "Warning: Package manager not recognized. Please ensure git, zip, vim, and curl are installed."
+        fi
+    else
+        echo "Skipping dependency installation."
+    fi
+}
+
 download_zip() {
     DIR=`mktemp -d`
     curl -sL -o "$DIR/workbench.zip" https://github.com/randy3k/workbench/archive/master.zip
@@ -30,6 +44,8 @@ initialize_profile() {
     bash ~/.local/workbench/profile_init.sh
 }
 
+echo "Installing dependencies."
+install_dependencies
 
 echo='Please choose a method: '
 options=("download zip" "git clone" )
