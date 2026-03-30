@@ -3,7 +3,7 @@
 set -e
 shopt -s expand_aliases
 
-if [[ -n "$SSH_AUTH_SOCK" || -f ~/.ssh/id_rsa ]]; then
+if [[ -n "$SSH_AUTH_SOCK" || -f ~/.ssh/id_ed25519_github ]]; then
     # has ssh agent forwarded or has ssh key
     git clone --bare git@github.com:randy3k/dotfiles.git $HOME/.dotfiles
 else
