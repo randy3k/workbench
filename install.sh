@@ -3,13 +3,25 @@
 set -e
 
 install_dependencies() {
-    read -p "Install dependencies (git, zip, vim, curl)? [y/N] " -r choice
+    local deps=("git" "zip" "vim" "curl")
+    local missing=()
+    for dep in "${deps[@]}"; do
+        if ! command -v "$dep" >/dev/null 2>&1; then
+            missing+=("$dep")
+        fi
+    done
+
+    if [ ${#missing[@]} -eq 0 ]; then
+        return
+    fi
+
+    read -p "Install missing dependencies (${missing[*]})? [y/N] " -r choice
     if [[ "$choice" =~ ^[yY]$ ]]; then
         if command -v apt-get >/dev/null; then
             sudo apt-get update
-            sudo apt-get install -y git zip vim curl
+            sudo apt-get install -y "${missing[@]}"
         else
-            echo "Warning: Package manager not recognized. Please ensure git, zip, vim, and curl are installed."
+            echo "Warning: Package manager not recognized. Please ensure ${missing[*]} are installed."
         fi
     else
         echo "Skipping dependency installation."
@@ -44,7 +56,6 @@ initialize_profile() {
     bash ~/.local/workbench/profile_init.sh
 }
 
-echo "Installing dependencies."
 install_dependencies
 
 echo='Please choose a method: '
